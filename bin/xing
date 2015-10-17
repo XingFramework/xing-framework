@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+$: << File.join(__FILE__, '..', '..', 'lib')
+require 'xing/cli'
+Xing::CLI.new.handle_cli
