@@ -6,6 +6,10 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    cadre (1.0.1)
+      thor (>= 0.14, < 1.0)
+      tilt (> 1.0)
+      valise (~> 1.1.2)
     calibrate (0.0.1)
     caliph (0.3.1)
     codeclimate-test-reporter (0.4.8)
@@ -50,6 +54,7 @@ GEM
     simplecov-json (0.2)
       json
       simplecov
+    thor (0.19.1)
     tilt (2.0.1)
     valise (1.1.4)
 
@@ -57,6 +62,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cadre
   caliph
   codeclimate-test-reporter
   corundum

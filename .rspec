@@ -1,0 +1,8 @@
+--format documentation
+--out last_run
+--color
+--format documentation
+-I lib
+-I spec_help
+--require simplecov
+--require spec_helper

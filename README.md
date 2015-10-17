@@ -1,4 +1,4 @@
-The Xing Framework: Backend
+The Xing Framework
 ===
 
 The Xing Framework is a cutting edge web and mobile development platform by
