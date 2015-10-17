@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
-$: << File.join(__FILE__, '..', '..', 'lib')
+
+include_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib')) 
+$: << include_path
+
 require 'xing/cli'
 Xing::CLI.new.handle_cli

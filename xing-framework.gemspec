@@ -49,6 +49,7 @@ Gem::Specification.new do |spec|
   spec.rdoc_options	+= ["--title", "#{spec.name}-#{spec.version} Documentation"]
 
   spec.add_dependency("trollop", "~> 2.1.0")
+  spec.add_dependency("caliph", "~> 0.3.0")
 
   spec.post_install_message = "Welcome to the exciting new world of Xing web development!"
 end

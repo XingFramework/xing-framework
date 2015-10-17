@@ -37,8 +37,7 @@ Global Options:
         name = ARGV.shift
         Trollop::die "Please specify a project name with 'xing new <name>'" unless name
         Trollop::die "The CMS option is not yet implemented." if opts[:cms]
-        p "would generate project #{name}"
-        #Xing::CLI::Generators::NewProject.new.generate(opts)
+        Xing::CLI::Generators::NewProject.new.generate(opts.merge({:name => name}))
       else
         Trollop::die "Unknown command.  Supported commands are [" + SUPPORTED_VERBS.join(" ") + "]"
       end
@@ -46,3 +45,5 @@ Global Options:
     end
   end
 end
+
+require 'xing/cli/generators'
