@@ -2,10 +2,13 @@ PATH
   remote: .
   specs:
     xing-framework (0.0.1)
+      caliph (~> 0.3.0)
+      trollop (~> 2.1.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (6.0.2)
     cadre (1.0.1)
       thor (>= 0.14, < 1.0)
       tilt (> 1.0)
@@ -56,14 +59,15 @@ GEM
       simplecov
     thor (0.19.1)
     tilt (2.0.1)
+    trollop (2.1.2)
     valise (1.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   cadre
-  caliph
   codeclimate-test-reporter
   corundum
   xing-framework!

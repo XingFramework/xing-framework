@@ -1,4 +1,5 @@
 require 'version'
+require 'byebug'
 
 module Xing
   class CLI
@@ -23,7 +24,13 @@ Global Options:
     def handle_cli
       Trollop::options do
         banner BANNER
-        version "Xing CLI #{XING_CLI_VERSION} (c) 2015 Logical Reality Design, Inc."
+        framework_version =
+          begin
+            Gem::Specification.find_by_name("xing-framework").version
+          rescue Gem::LoadError
+            "<developement-version>"
+          end
+        version "Xing CLI #{framework_version} (c) 2015 Logical Reality Design, Inc."
         stop_on SUPPORTED_VERBS
       end
 

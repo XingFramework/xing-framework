@@ -1,13 +1,10 @@
 # coding: utf-8
 
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'lib/version'
 
 Gem::Specification.new do |spec|
   spec.name		= "xing-framework"
   #{MAJOR: incompatible}.{MINOR added feature}.{PATCH bugfix}-{LABEL}
-  spec.version		= Xing::CLI::VERSION
+  spec.version		= "0.0.1"
   author_list = {
     "Evan Dorn" => 'evan@lrdesign.com'
   }

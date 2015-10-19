@@ -16,7 +16,7 @@ module Xing::CLI::Generators
       if result.succeeded?
         remove_git_directory(options[:name], shell)
       else
-        exit("Attempt to clone base git repository failed!")
+        raise "Attempt to clone base git repository failed!"
       end
     end
 
