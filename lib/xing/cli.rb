@@ -1,4 +1,3 @@
-require 'version'
 require 'byebug'
 
 module Xing
