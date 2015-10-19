@@ -14,9 +14,8 @@ tmp/
 spec_help/dummy/log/test.log
 last_run
 coverage/*
-corundum/
-pkg
 .idea/
 vendor/
 errors.err
-
+corundum/
+pkg/

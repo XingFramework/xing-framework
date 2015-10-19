@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'corundum'
+gem 'corundum', :path => "../../ruby/gems/corundum/"
 gem "cadre"
 gem "byebug"
 gemspec :name => "xing-framework" #points to default 'xing-framework.gemspec'
