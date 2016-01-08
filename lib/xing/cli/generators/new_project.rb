@@ -4,25 +4,22 @@ module Xing::CLI::Generators
   class NewProject
     include Caliph::CommandLineDSL
 
-    BASE_PROJECT_URL = "git@github.com:XingFramework/xing-application-base.git"
+    attr_accessor :target_name
 
-    # For the moment, this is the simplest thing that can work. Zero templating is done
-    # so the project will still have the default module names etc.
-    def generate(options)
-      shell = Caliph.new()
-      command = cmd('git', 'clone', '--depth=1', '--branch=master', BASE_PROJECT_URL, options[:name])
+    def shell
+      @shell ||= Caliph.shell
+    end
+    attr_writer :shell
+
+    # For the moment, this is the simplest thing that can work. Zero templating
+    # is done so the project will still have the default module names etc.
+    def generate
+      command = cmd('cp', '-a', File.expand_path('../../../../../default_configuration/base_app/', __FILE__), target_name)
       result = shell.run(command)
 
-      if result.succeeded?
-        remove_git_directory(options[:name], shell)
-      else
-        raise "Attempt to clone base git repository failed!"
+      unless result.succeeded?
+        raise "Attempt to copy base application to #{target_name} failed!"
       end
-    end
-
-    def remove_git_directory(name, shell)
-      git_dir = File.join("#{name}", ".git")
-      shell.run(cmd('rm -rf', git_dir))
     end
   end
 end
