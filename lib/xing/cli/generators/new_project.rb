@@ -22,9 +22,7 @@ module Xing::CLI::Generators
 
     def remove_git_directory(name, shell)
       git_dir = File.join("#{name}", ".git")
-      if File.exists?(git_dir)
-        shell.run(cmd('rm -rf', git_dir))
-      end
+      shell.run(cmd('rm -rf', git_dir))
     end
   end
 end

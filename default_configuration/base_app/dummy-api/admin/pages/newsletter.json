@@ -1,0 +1,54 @@
+{
+  "links": {
+    "self": "/admin/pages/newsletter",
+    "public": "/pages/newsletter"
+  },
+  "data": {
+    "title": "Newsletter",
+    "keywords": "adipisci, repellat",
+    "description": "Magni quo non et soluta. Vero aliquam ut ut adipisci facere",
+    "layout": "two_column",
+    "contents": {
+      "column_two": {
+        "links": {
+          "self": "/admin/content_blocks/32"
+        },
+        "data": {
+          "content_type": "text/html",
+          "body": "Magni et esse consequatur quia recusandae et animi aut repudiandae reprehenderit. expedita praesentium aut ipsa numquam autem laudantium ducimus nulla ipsa quae fugit. illo est culpa cumque dolores doloribus eum eos ab hic ducimus qui alias et sit quo. aut odit eos magnam nihil beatae\n\nIusto nihil voluptatem sunt dolore laborum facere sed esse. earum dolorum iste quos facere ab non quo quidem quo ipsa vel ducimus. sed dolor nostrum iste occaecati maiores eius voluptas repudiandae est corporis accusantium quo iusto ut quidem nostrum illum vel. rem incidunt quaerat quos et ex unde ab consequatur quod optio voluptatem molestiae autem aut possimus"
+        }
+      },
+      "column_one": {
+        "links": {
+          "self": "/admin/content_blocks/31"
+        },
+        "data": {
+          "content_type": "text/html",
+          "body": "Quia reiciendis velit beatae nihil fuga deleniti porro blanditiis velit sunt placeat ea deleniti in. placeat aut ipsa quo ut praesentium dolores vel sunt consequatur sit dolor inventore vitae qui laudantium sed recusandae consequuntur. eligendi earum et vel ut ex fuga eaque dolorem laboriosam officiis tenetur expedita delectus\n\nQuis adipisci assumenda vitae commodi illum aut sint sed earum omnis sapiente omnis. mollitia ex assumenda esse voluptatem eum excepturi voluptas est quia dolor eius dolorem. maxime dicta aliquam vel hic ipsum et ea id voluptatem molestiae labore sed et optio quos. quidem perspiciatis ut vero ullam a iusto. quasi tempora commodi mollitia maxime odit vitae amet eum ut exercitationem voluptatibus magni et a. quos natus eligendi eligendi non similique pariatur velit qui. dolorum maxime tempore aut doloribus illo inventore. impedit nemo doloremque distinctio adipisci dignissimos cumque corporis expedita voluptatibus dicta rerum sit non pariatur sapiente voluptates tempore"
+        }
+      },
+      "styles": {
+        "links": {
+          "self": "/admin/content_blocks/30"
+        },
+        "data": {
+          "content_type": "text/css",
+          "body": "  "
+        }
+      },
+      "headline": {
+        "links": {
+          "self": "/admin/content_blocks/29"
+        },
+        "data": {
+          "content_type": "text/html",
+          "body": "Doloribus Aspernatur"
+        }
+      }
+    },
+    "url_slug": "newsletter",
+    "published": true,
+    "publish_start": null,
+    "publish_end": null
+  }
+}

@@ -1,0 +1,10 @@
+# There is no POST or GET for content-block. They should be created and fetched via the page
+# resource.  However, in order to support in-line / AJAXY editing, the front-end may update
+# an individual content block resource.
+
+# PUT /admin/content-blocks/:id
+{
+  data: {
+    body: "New value for this content block's body"
+  }
+}

@@ -1,0 +1,25 @@
+<h1>Sign In</h1>
+
+<form id='sessions-form'>
+    <div class='lrd-form-row'>
+      <label for="{{authKey}}">{{humanAuthKey}}:</label>
+      <input name="{{authKey}}" ng-model="session[authKey]" placeholder="{{humanAuthKey}}" required />
+      <span class='messages'></span>
+    </div>
+
+    <div class='lrd-form-row'>
+      <label for="password">Password:</label>
+      <input type="password" name="password" ng-model="session.password" placeholder="Password" required />
+      <span class='messages'></span>
+    </div>
+
+    <div class='lrd-form-row'>
+      <button type="submit" ng-click="sessionSubmit()" class="call-to-action">Sign In</button>
+    </div>
+
+    <div class='lrd-form-row'>
+      <div ng-if="passwordShow" class='input-like'>
+        <a ui-sref='root.inner.passwordsRequest'>Forgot your password?</a>
+      </div>
+    </div>
+</form>

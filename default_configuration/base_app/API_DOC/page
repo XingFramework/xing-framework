@@ -1,0 +1,38 @@
+
+# an individual page
+GET /pages/:slug
+{
+  links: {
+    self: "/pages/:slug",
+    admin: "admin/pages/:slug"
+  },
+  data: {
+    title: "string",
+    keywords: "string",
+    description: "string",
+    layout:  "one_column",
+    contents: {
+      main: {
+        links: { self: "/content-blocks/:id"  }
+        data: {
+          content_type: 'text/html',
+          body: 'Four score and <em>seven</em> years'
+        }
+      },
+      headline: {
+        links: { self: "/content-blocks/:id" },
+        data: {
+          content_type: 'text/html',
+          body: 'The Gettysburg Address'
+        }
+      },
+      styles: {
+        links: { self: "/content-blocks/:id" },
+        data: {
+          content_type: 'text/css',
+          body: 'p { font-weight: bold; }'
+        }
+      }
+    }
+  }
+}

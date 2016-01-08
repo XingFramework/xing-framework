@@ -1,0 +1,54 @@
+
+
+#GET /navigation/main:
+{
+ links: {
+   self: "/navigation/main"
+  },
+  data: [
+
+    # a top-level menu item
+    {
+      links : {}
+      data : {
+        name: "Services",
+        url: 'services',
+        type: [ 'page' | 'raw_url' ]
+        children: [
+
+          # a sub-menu item under "Services"
+          {
+            links: {},
+            data: {
+              name: "Startup MVPs",
+              url: '/startup-mvps',
+              type: [ 'page' | 'raw_url' ],
+              # no children - key omitted
+            }
+          },
+          {
+            links: {},
+            data: {
+              name: "Code Rescue",
+              url: '/code-rescue'
+              type: [ 'page' | 'raw_url' ]
+              # no children - key omitted
+            }
+          },
+
+        ]
+      }
+    },
+
+    # a top-level menu item with an external link
+    {
+      links : {}
+      data : {
+        name: "About Web Security",
+        url: 'https://www.owasp.org/index.php/Main_Page',
+        type: 'raw_url',
+        # no children - key ommitted
+      }
+    }
+  ]
+}

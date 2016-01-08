@@ -1,0 +1,68 @@
+#!/bin/bash -e
+
+#TODO: port needs to actually do the port addition e.g. -p 1 => +1 to port numbers
+
+existing="yes"
+new_thing="pane"
+port=0
+extra_config=~/.lrd-dev-tmux.conf
+
+if [ -z $TMUX ]; then
+  existing="no"
+fi
+
+if tmux list-windows -F '#{window_name}' | egrep 'Dev Servers|Grunt Watch|Backend Server|Sidekiq'; then
+  echo "It looks like there are already windows open for this tmux?"
+  exit 2
+fi
+
+while getopts Pw option; do
+  case $option in
+    P) new_thing="pane";;
+  w) new_thing="window";;
+
+esac
+done
+
+DEPENDENCIES_INCLUDE_TMUX=true rake preflight || exit 1
+
+frontend_dir=$(realpath frontend)
+backend_dir=$(realpath backend)
+
+case $new_thing in
+  pane)
+    if [ $existing == "yes" ]; then
+      tmux new-window -n "Dev Servers" -c $frontend_dir 'bundle exec node_modules/.bin/grunt --stack watch:develop' \; set-window-option remain-on-exit on
+    else
+      tmux new-session -d -n "Dev Servers" -c $frontend_dir 'bundle exec node_modules/.bin/grunt --stack watch:develop' \; set-window-option remain-on-exit on
+    fi
+
+    tmux split-window -c $backend_dir 'bundle exec sidekiq'
+    tmux split-window -c $backend_dir 'bundle exec rails server'
+
+    tmux select-layout -t "Dev Servers" tiled
+    ;;
+  window)
+    if [ $existing == "yes" ]; then
+      tmux new-window -c $frontend_dir -n "Grunt Watch" 'env; bundle exec node_modules/.bin/grunt watch:develop' \; set-window-option remain-on-exit on
+    else
+      tmux new-session -d -c $frontend_dir -n "Grunt Watch" 'env; bundle exec node_modules/.bin/grunt watch:develop' \; set-window-option remain-on-exit on
+    fi
+
+    tmux new-window -c $backend_dir -n "Backend Server" 'bundle exec rails server' \; set-window-option remain-on-exit on
+
+    tmux new-window -c $backend_dir -n "Sidekiq" 'bundle exec sidekiq' \; set-window-option remain-on-exit on
+esac
+
+if [ -f $extra_config ]; then
+  echo Loading $extra_config
+  tmux source-file $extra_config
+else
+  echo No $extra_config to load
+fi
+
+if [ $existing != "yes" ]; then
+  tmux attach-session -d
+fi
+
+rake develop:launch_browser

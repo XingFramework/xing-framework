@@ -1,0 +1,14 @@
+{
+  "links": {
+    "self": "/pages/homepage",
+    "admin": "/admin/pages/homepage"
+  },
+  "data": {
+    "title": "This site's homepage",
+    "keywords": "Info, about, this, site.",
+    "description": "This site was built with LRD's CMS framework.",
+    "layout": "homepage",
+    "contents": {
+    }
+  }
+}

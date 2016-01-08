@@ -1,0 +1,173 @@
+
+Failure to get Menu
+--------------------------------------
+Failures:
+
+  1) Vistor navigated to a path on mobile clicks on Menu
+     Failure/Error: click_on("Menu")  # Expand the currently-collapsed menu
+     Capybara::ElementNotFound:
+       Unable to find link or button "Menu"
+     # ./spec/features/visitor_navigates_with_menu_spec.rb:55:in `block (2 levels) in <top (required)>'
+
+  2) Vistor navigated to a path on mobile step list
+     Failure/Error: example.run(self, reporter)
+     Capybara::ElementNotFound:
+       Unable to find link or button "Menu"
+     # ./spec/features/visitor_navigates_with_menu_spec.rb:55:in `block (2 levels) in <top (required)>'
+
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Resource load for: /menus
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Resource load for: /resources
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+home A - isAdmin
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Found No Admin
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Admin state : bool
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+home B - page
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+backend: [object Object]
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+home c - page
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Resource load for: /homepage
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Response in backendResponds: {"links":{"self":"/menus"},"data":[{"links":{"self":"/menus/1"},"data":{"name":"Main Menu"}},{"links":{"self":"/menus/2"},"data":{"name":"Blog Topics"}}],"route":"menus","reqParams":null,"$fromServer":true,"parentResource":null,"restangularCollection":false}
+
+Fri Jan 30 2015 17:39:43 GMT-0800 (PST)
+Response in backendResponds: {"links":{"self":"/pages/homepage","admin":"/admin/pages/homepage"},"data":{"title":"This site's homepage","keywords":"Info, about, this, site.","description":"This site was built with LRD's CMS framework.","layout":"homepage","contents":{}},"route":"homepage","reqParams":null,"$fromServer":true,"parentResource":null,"restangularCollection":false}
+
+(END) 
+
+
+-------------------------------------
+
+Beginning step Vistor navigated to a path on mobile clicks on Menu (at ./spec/features/visitor_navigates_with_menu_spec.rb:54)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+Response: {
+  "links": {
+    "sidekiq_web": "/sidekiq",
+    "homepage": "/homepage",
+    "page": "/pages/{url_slug}",
+    "menus": "/menus",
+    "menu": "/menus/{id}",
+    "resources": "/resources",
+    "admin_froala_images": "/admin/froala_images",
+    "admin_froala_images_delete": "/admin/froala_images/delete",
+    "admin_froala_documents": "/admin/froala_documents",
+    "admin_pages": "/admin/pages",
+    "new_admin_page": "/admin/pages/new",
+    "edit_admin_page": "/admin/pages/{url_slug}/edit",
+    "admin_page": "/admin/pages/{url_slug}",
+    "admin_menu_items": "/admin/menu_items",
+    "new_admin_menu_item": "/admin/menu_items/new",
+    "edit_admin_menu_item": "/admin/menu_items/{id}/edit",
+    "admin_menu_item": "/admin/menu_items/{id}",
+    "admin_content_blocks": "/admin/content_blocks",
+    "new_admin_content_block": "/admin/content_blocks/new",
+    "edit_admin_content_block": "/admin/content_blocks/{id}/edit",
+    "admin_content_block": "/admin/content_blocks/{id}",
+    "new_user_session": "/users/sign_in",
+    "user_session": "/users/sign_in",
+    "destroy_user_session": "/users/sign_out",
+    "user_password": "/users/password",
+    "new_user_password": "/users/password/new",
+    "edit_user_password": "/users/password/edit",
+    "cancel_user_registration": "/users/cancel",
+    "user_registration": "/users",
+    "new_user_registration": "/users/sign_up",
+    "edit_user_registration": "/users/edit",
+    "user_confirmation": "/users/confirmation",
+    "new_user_confirmation": "/users/confirmation/new",
+    "validate_token": "/users/validate_token"
+  },
+  "data": {
+  }
+}
+Started GET "/menus" for 127.0.0.1 at 2015-01-30 17:39:43 -0800
+Processing by MenusController#index as JSON
+  MenuItem Load (0.3ms)  SELECT "menu_items".* FROM "menu_items"  WHERE "menu_items"."parent_id" IS NULL
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+Response: {
+  "links": {
+    "self": "/menus"
+  },
+  "data": [
+    {
+      "links": {
+        "self": "/menus/1"
+      },
+      "data": {
+        "name": "Main Menu"
+      }
+    },
+    {
+      "links": {
+        "self": "/menus/2"
+      },
+      "data": {
+        "name": "Blog Topics"
+      }
+    }
+  ]
+}
+Started GET "/homepage" for 127.0.0.1 at 2015-01-30 17:39:43 -0800
+Processing by PagesController#show as JSON
+  Parameters: {"url_slug"=>"homepage"}
+  Page Load (0.3ms)  SELECT  "pages".* FROM "pages"  WHERE "pages"."url_slug" = 'homepage' LIMIT 1
+  PageContent Load (0.3ms)  SELECT "page_contents".* FROM "page_contents"  WHERE "page_contents"."page_id" = $1  [["page_id", 1]]
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+Response: {
+  "links": {
+    "self": "/pages/homepage",
+    "admin": "/admin/pages/homepage"
+  },
+  "data": {
+    "title": "This site's homepage",
+    "keywords": "Info, about, this, site.",
+    "description": "This site was built with LRD's CMS framework.",
+    "layout": "homepage",
+    "contents": {
+    }
+  }
+}
+Finished step Vistor navigated to a path on mobile clicks on Menu (at ./spec/features/visitor_navigates_with_menu_spec.rb:54)

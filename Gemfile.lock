@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     xing-framework (0.0.1)
-      caliph (~> 0.3.0)
-      trollop (~> 2.1.0)
+      caliph (~> 0.3)
+      trollop (~> 2.1)
 
 GEM
   remote: https://rubygems.org/

@@ -1,0 +1,23 @@
+{
+  "links": {
+    "self": "/admin/menus"
+  },
+  "data": [
+    {
+      "links": {
+        "self": "/admin/menus/1"
+      },
+      "data": {
+        "name": "Main Menu"
+      }
+    },
+    {
+      "links": {
+        "self": "/admin/menus/2"
+      },
+      "data": {
+        "name": "Blog Topics"
+      }
+    }
+  ]
+}

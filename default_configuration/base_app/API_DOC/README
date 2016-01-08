@@ -1,0 +1,23 @@
+
+All requests and responses are JSON. Client should send Accept:
+"application/json" on all requests, and Content-Type: "application/json" on
+requests with bodies (i.e. POST, PUT).
+
+OPEN QUESTIONS:
+  PATCH? Only makes sense if the body somehow represents a change rather than a replacement.
+  All link relations? Or just self-links and use resource embed for
+    relationships?
+
+Server responses should represent resources as a JSON object with two fields:
+`links` and `data`. Both fields should contain an object. The links object
+should have fields equivalent to HTML "rel" attributes. Importantly the self
+link, but we should define link types internal to the application.
+
+The data object is more free form. Some commonality of fields is worthwhile,
+but whatever most sensibly represents the resource is the best choice.
+
+Where a resource refers to another, include a subset of the other resource in
+the data object.
+
+Examples: #with ruby style comments
+

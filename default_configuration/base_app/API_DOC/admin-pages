@@ -1,0 +1,173 @@
+# NOTE: public has no view of list of pages
+# This endpoint will NOT include blog posts: this is the list
+# of pages to appear in the "Edit Pages" tool for admin users.
+#
+# RFC:  Is 'self' link the public view of the page, or the admin
+# view of the page?  I'd think the latter
+#
+# GET /admin/pages
+{
+  links {
+    self: '/admin/pages'
+  },
+  data: [
+    { links: {
+        self:   '/admin/pages/:slug1'
+        public: '/pages/:slug1'
+      },
+      data:  {
+        title: 'Page 1',
+        layout: "one_column",
+        url_slug: "url_slug",
+        published: [true | false],
+        publish_start: <date/time>,
+        publish_end: <date/time>
+      }
+    },
+    { links: {
+        self:   '/admin/pages/:slug2' ,
+        public: '/pages/:slug2'
+      },
+      data:  {
+        title: 'Page 2'
+        layout: "one_column",
+        url_slug: "url_slug",
+        published: [true | false],
+        publish_start: <date/time>,
+        publish_end: <date/time>
+      }
+    },
+    { links: {
+        self:   '/admin/pages/:slug3'
+        public: '/pages/:slug3'
+      },
+      data:  {
+        title: 'Page 3',
+        layout: "two_column",
+        url_slug: "url_slug",
+        published: [true | false],
+        publish_start: <date/time>,
+        publish_end: <date/time>
+      }
+    }
+  ]
+}
+
+# RFP: I think this one is ready to go.
+#
+# GET /admin/pages/:url_slug
+{
+  links: {
+    self: "/admin/pages/:slug",
+    public: "/pages/:slug"
+  },
+
+  data: {
+    url_slug: 'some-url-slug',
+    title: "string",
+    keywords: "string",
+    description: "string",
+    layout:  "one_column",
+    url_slug: "url_slug",
+    published: "boolean",
+    publish_start: "datetime",
+    publish_end: "datetime",
+    contents: {
+      main: {
+        links: { self: "/content-blocks/:id"  }
+        data: {
+          content_type: 'text/html',
+          body: 'Four score and <em>seven</em> years'
+        }
+      },
+      headline: {
+        links: { self: "/content-blocks/:id" },
+        data: {
+          content_type: 'text/html',
+          body: 'The Gettysburg Address'
+        }
+      },
+      styles: {
+        links: { self: "/content-blocks/:id" },
+        data: {
+          content_type: 'text/css',
+          body: 'p { font-weight: bold; }'
+        }
+      }
+    }
+  }
+}
+
+
+# POST /admin/pages
+# creates a page with the supplied content
+{
+  # links omitted
+  data: {
+    url_slug: "string",    # optional
+    title: "string",       # REQUIRED
+    keywords: "string",    # optional
+    description: "string", # optional
+    layout: "",            # REQUIRED - options are an ENUM per project
+
+    published: <boolean>,      # optional - default true
+    publish_start: <datetime>, # optional - default nil
+    publish_end: <datetime>,   # optional - default nil
+
+    contents: {
+      main: {
+        data: {
+          # NOTE: content-type omitted because that's specified in the back-end
+          # specification for this Page layout
+          body: 'Four score and <em>seven</em> years'
+        }
+      },
+      headline: {
+        data: {
+          body: 'The Gettysburg Address'
+        }
+      },
+      styles: {
+        data: {
+          body: 'p { font-weight: bold; }'
+        }
+      }
+    }
+  }
+}
+
+# PUT /admin/pages/:url_slug
+# exactly like POST except that all fields are now optional, existing
+# values will be retained
+{
+  # links omitted
+  data: {
+    url_slug: "string",    # optional
+    title: "string",       # optional
+    keywords: "string",    # optional
+    description: "string", # optional
+    layout: "",            # optional
+
+    published: <boolean>,      # optional - default true
+    publish_start: <datetime>, # optional - default nil
+    publish_end: <datetime>,   # optional - default nil
+
+    contents: {
+      main: {
+        data: {
+          body: 'Four score and <em>seven</em> years'
+        }
+      },
+      headline: {
+        data: {
+          body: 'The Gettysburg Address'
+        }
+      },
+      styles: {
+        data: {
+          body: 'p { font-weight: bold; }'
+        }
+      }
+    }
+  }
+}

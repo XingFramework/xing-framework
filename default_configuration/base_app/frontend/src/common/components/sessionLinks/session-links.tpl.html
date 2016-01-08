@@ -1,0 +1,5 @@
+<ul class="session-links">
+  <li ng-hide="lrdSessionLinks.isLoggedIn"><a ui-sref='root.inner.registrations'>Sign Up</a></li>
+  <li ng-hide="lrdSessionLinks.isLoggedIn"><a ui-sref='root.inner.sessions'>Sign In</a></li>
+  <li ng-show="lrdSessionLinks.isLoggedIn"><a lrd-sign-out>Sign Out</a></li>
+</ul>
