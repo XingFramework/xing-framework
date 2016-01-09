@@ -1,5 +1,3 @@
-require 'byebug'
-
 module Xing
   class CLI
     SUPPORTED_VERBS = %w{new}
@@ -38,13 +36,18 @@ Global Options:
       when 'new'
         opts = Trollop::options do
           opt :cms, "Include content management architecture. (coming soon)"
+          opt :ruby_version, "Set the ruby version used for the new project (e.g. 2.2)"
           stop_on ['name']
         end
         name = ARGV.shift
         Trollop::die "Please specify a project name with 'xing new <name>'" unless name
         Trollop::die "The CMS option is not yet implemented." if opts[:cms]
+        if opts[:ruby_version].nil?
+          opts[:ruby_version] = RbConfig::CONFIG.values_at("MAJOR","MINOR").join(".")
+        end
         generator = Xing::CLI::Generators::NewProject.new
         generator.target_name = name
+        generator.ruby_version = opts[:ruby_version]
         generator.generate
       else
         Trollop::die "Unknown command.  Supported commands are [" + SUPPORTED_VERBS.join(" ") + "]"
