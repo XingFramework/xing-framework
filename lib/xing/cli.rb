@@ -36,7 +36,7 @@ Global Options:
       when 'new'
         opts = Trollop::options do
           opt :cms, "Include content management architecture. (coming soon)"
-          opt :ruby_version, "Set the ruby version used for the new project (e.g. 2.2)"
+          opt :ruby_version, "Set the ruby version used for the new project (e.g. 2.2)", :type => :string
           stop_on ['name']
         end
         name = ARGV.shift
