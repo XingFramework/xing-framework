@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xing-framework (0.0.1)
+    xing-framework (0.0.2)
       caliph (~> 0.3)
       trollop (~> 2.1)
 
@@ -73,4 +73,4 @@ DEPENDENCIES
   xing-framework!
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
