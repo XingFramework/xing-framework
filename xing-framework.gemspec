@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
     spec/null_spec.rb
     spec_help/spec_helper.rb
     spec_help/gem_test_suite.rb
-  ]
+  ] + Dir['default_configuration/base_app/**']
 
   spec.test_file        = "spec_help/gem_test_suite.rb"
   spec.licenses = ["MIT"]
