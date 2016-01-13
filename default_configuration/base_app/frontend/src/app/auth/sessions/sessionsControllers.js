@@ -1,7 +1,7 @@
 import {Controller} from 'a1atscript';
 
-@Controller('SessionsCtrl', ['$scope', '$auth', '$state', '$lrdToast', 'Serializer', 'authConfig', 'Inflector'])
-export default function SessionsController( $scope, $auth, $state, $lrdToast, Serializer, authConfig, Inflector) {
+@Controller('SessionsCtrl', ['$scope', '$auth', '$state', '$xngToast', 'Serializer', 'authConfig', 'Inflector'])
+export default function SessionsController( $scope, $auth, $state, $xngToast, Serializer, authConfig, Inflector) {
   $scope.session = {
     password: ''
   };
@@ -18,7 +18,7 @@ export default function SessionsController( $scope, $auth, $state, $lrdToast, Se
         $state.go('root.inner.sessionsSuccess');
       })
       .catch(function(resp) {
-        $lrdToast.error(resp.errors);
+        $xngToast.error(resp.errors);
         // handle error response
       });
   };

@@ -4,11 +4,11 @@ import { environment } from "./environment.js";
 export var backendUrl = (function(){
   var cookies = [];
   if(document.cookie) {
-    cookies = document.cookie.split(';');
+    cookies = document.cookie.split(/;\s*/);
   }
 
   var matches = cookies.filter((cookie) => {
-    return /^xngBackendUrl=/.test(cookie);
+    return /^xingBackendUrl=/.test(cookie);
   });
 
   if(matches.length > 0) {

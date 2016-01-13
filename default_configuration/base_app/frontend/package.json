@@ -1,7 +1,7 @@
 {
   "name": "XING-BASE",
   "version": "0.0.1",
-  "repository": "git@git.lrdesign.com:lrd/cms2.git",
+  "repository": "git@github.com:XingFramework/xing-application-base.git",
   "author": "Logical Reality Design",
   "homepage": "http://lrdesign.com",
   "scripts": {
@@ -64,10 +64,10 @@
     "singularitygs": "> 0",
     "traceur": "0.0.87",
     "uri-templates": "~0.1.5",
-    "xing-framework-sass": "0.0.2",
+    "xing-framework-sass": "0.0.3",
     "xing-frontend-grunt": "0.0.8",
     "xing-frontend-token-auth": "0.0.3",
-    "xing-frontend-utils": "0.0.1-beta5",
+    "xing-frontend-utils": "0.0.1-beta6",
     "xing-grunt-revise": "0.0.1",
     "xing-inflector": "0.0.2",
     "xing-traceur": "0.0.8"
