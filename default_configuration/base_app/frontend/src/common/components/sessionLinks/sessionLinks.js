@@ -6,7 +6,7 @@ import OnLoginDirective from 'components/OnLoginDirective/OnLoginDirective.js';
   'ng-token-auth',
   SignOut])
 @Component({
-  selector: 'lrdSessionLinks',
+  selector: 'xngSessionLinks',
   services: ['$rootScope', '$auth']
 })
 @Template({

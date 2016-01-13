@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/lrd_view_tools"]
-	path = vendor/plugins/lrd_view_tools
-	url = git@github.com:LRDesign/lrd_view_tools.git

@@ -8,7 +8,7 @@ export var backendUrl = (function(){
   }
 
   var matches = cookies.filter((cookie) => {
-    return /^lrdBackendUrl=/.test(cookie);
+    return /^xngBackendUrl=/.test(cookie);
   });
 
   if(matches.length > 0) {
@@ -17,7 +17,7 @@ export var backendUrl = (function(){
     return environment.backendUrl;
   }
 }());
-export var appName = "LRD-CMS2";
+export var appName = "XING-BASE";
 export var configuration = { backendUrl, appName };
 
 if(environment.name){

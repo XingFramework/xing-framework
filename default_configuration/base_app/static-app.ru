@@ -1,3 +1,3 @@
 $:.unshift("./backend")
 require 'lib/static-app'
-run LrdCms2::StaticApp.build("frontend/bin", ENV['LRD_BACKEND_PORT'])
+run XingBase::StaticApp.build("frontend/bin", ENV['XING_BACKEND_PORT'])

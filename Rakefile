@@ -49,6 +49,8 @@ namespace :app_base do
   end
 
   task :fetch => [:clone, :ungit]
+
+  desc "Update the live base files from the application base repo"
   task :refetch => [:clobber, :fetch]
 
   task :clone do

@@ -44,7 +44,7 @@ describe( 'Sessions controllers', function() {
         $scope: $scope,
         $state: $stateMock,
         $auth: $authMock,
-        $lrdToast: $toastMock
+        $xngToast: $toastMock
       });
       $scope.$apply();
     }));

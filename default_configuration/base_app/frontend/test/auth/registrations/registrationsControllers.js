@@ -56,7 +56,7 @@ describe( 'Registrations controllers', function() {
         $scope: $scope,
         $state: $stateMock,
         $auth: $authMock,
-        $lrdToast: $toastMock,
+        $xngToast: $toastMock,
         Serializer: mockSerializer
       });
       $scope.$apply();

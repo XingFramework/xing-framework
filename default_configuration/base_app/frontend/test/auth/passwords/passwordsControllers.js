@@ -72,7 +72,7 @@ describe( 'Passwords controllers', function() {
         $scope: $scope,
         $state: $stateMock,
         $auth: $authMock,
-        $lrdToast: $toastMock,
+        $xngToast: $toastMock,
         $location: mockLocation,
         Serializer: mockSerializer
       });
@@ -134,7 +134,7 @@ describe( 'Passwords controllers', function() {
         $scope: $scope,
         $state: $stateMock,
         $auth: $authMock,
-        $lrdToast: $toastMock,
+        $xngToast: $toastMock,
         Serializer: mockSerializer,
         $location: mockLocation
       });
