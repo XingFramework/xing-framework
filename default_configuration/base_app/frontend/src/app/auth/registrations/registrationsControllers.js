@@ -1,7 +1,7 @@
 import {Controller} from 'a1atscript';
 
-@Controller('RegistrationsCtrl', ['$scope', '$auth', '$state', '$lrdToast', 'Serializer'])
-export default function RegistrationsController( $scope, $auth, $state, $lrdToast, Serializer) {
+@Controller('RegistrationsCtrl', ['$scope', '$auth', '$state', '$xngToast', 'Serializer'])
+export default function RegistrationsController( $scope, $auth, $state, $xngToast, Serializer) {
   $scope.registration = {
     email: '',
     emailConfirmation: '',
@@ -17,7 +17,7 @@ export default function RegistrationsController( $scope, $auth, $state, $lrdToas
         $state.go('root.inner.registrationsSuccess');
       })
       .catch(function(resp) {
-        $lrdToast.errorList(resp.data.errors, "We cannot process your registration because:");
+        $xngToast.errorList(resp.data.errors, "We cannot process your registration because:");
         // handle error response
       });
   };

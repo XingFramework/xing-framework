@@ -1,7 +1,7 @@
 import { Controller } from 'a1atscript';
 
-@Controller('PasswordsRequestCtrl', ['$scope', '$auth', '$state', '$lrdToast', 'Serializer'])
-export function PasswordsRequestController( $scope, $auth, $state, $lrdToast, Serializer) {
+@Controller('PasswordsRequestCtrl', ['$scope', '$auth', '$state', '$xngToast', 'Serializer'])
+export function PasswordsRequestController( $scope, $auth, $state, $xngToast, Serializer) {
   $scope.passwordRequest = {
     email: '',
   };
@@ -17,14 +17,14 @@ export function PasswordsRequestController( $scope, $auth, $state, $lrdToast, Se
         $state.go('root.inner.passwordsRequestSuccess');
       })
       .catch(function(resp) {
-        $lrdToast.errorList(resp.data.errors);
+        $xngToast.errorList(resp.data.errors);
         // handle error response
       });
   };
 }
 
-@Controller('PasswordsUpdateCtrl', ['$scope', '$auth', '$state', '$lrdToast', '$location', 'Serializer'])
-export function PasswordsUpdateController( $scope, $auth, $state, $lrdToast, $location, Serializer) {
+@Controller('PasswordsUpdateCtrl', ['$scope', '$auth', '$state', '$xngToast', '$location', 'Serializer'])
+export function PasswordsUpdateController( $scope, $auth, $state, $xngToast, $location, Serializer) {
   $scope.passwordUpdate = {
     password: '',
     passwordConfirmation: ''
@@ -40,7 +40,7 @@ export function PasswordsUpdateController( $scope, $auth, $state, $lrdToast, $lo
         $state.go('root.inner.passwordsUpdateSuccess');
       })
       .catch(function(resp) {
-        $lrdToast.errorList(resp.data.errors, "We could not update your password because:");
+        $xngToast.errorList(resp.data.errors, "We could not update your password because:");
         // handle error response
       });
   };
