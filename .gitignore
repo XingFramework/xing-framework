@@ -9,3 +9,4 @@ last_run
 errors.err
 corundum/
 pkg/
+.cadre/
