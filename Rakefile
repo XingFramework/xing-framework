@@ -10,6 +10,11 @@ module Corundum
   core.in_namespace do
     GemspecFiles.new(core) do |files|
       files.extra_files = Rake::FileList["default_configuration/base_app/**/*"]
+
+      # These are (possibly obsolete?) symlinks
+      files.extra_files << "default_configuration/base_app/backend/public/assets"
+      files.extra_files << "default_configuration/base_app/backend/public/fonts"
+      files.extra_files << "default_configuration/base_app/backend/public/index.html"
     end
 
     #Also available: 'unfinished': TODO and XXX

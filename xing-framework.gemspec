@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'find'
+
 Gem::Specification.new do |spec|
   spec.name		= "xing-framework"
   #{MAJOR: incompatible}.{MINOR added feature}.{PATCH bugfix}-{LABEL}
@@ -33,7 +35,12 @@ Gem::Specification.new do |spec|
     spec/null_spec.rb
     spec_help/spec_helper.rb
     spec_help/gem_test_suite.rb
-  ] + Dir['default_configuration/base_app/**']
+  ]
+  Find.find('default_configuration/base_app') do |path|
+    Find.prune if File.basename(path)[0] == ?.
+    next if File.directory?(path)
+    spec.files << path
+  end
 
   spec.test_file        = "spec_help/gem_test_suite.rb"
   spec.licenses = ["MIT"]
