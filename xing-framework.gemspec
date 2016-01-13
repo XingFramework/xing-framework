@@ -44,6 +44,8 @@ Gem::Specification.new do |spec|
     spec.files << path
   end
 
+  puts spec.files
+
   spec.test_file        = "spec_help/gem_test_suite.rb"
   spec.licenses = ["MIT"]
   spec.require_paths = %w[lib/]
