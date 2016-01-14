@@ -1,4 +1,5 @@
 require 'caliph'
+require 'bundler'
 
 module Xing::CLI::Generators
   class NewProject

@@ -5,7 +5,7 @@ require 'find'
 Gem::Specification.new do |spec|
   spec.name		= "xing-framework"
   #{MAJOR: incompatible}.{MINOR added feature}.{PATCH bugfix}-{LABEL}
-  spec.version		= "0.2.1"
+  spec.version		= "0.2.2"
   author_list = {
     "Evan Dorn" => 'evan@lrdesign.com',
     "Judson Lester" => "judson@lrdesign.com"
@@ -57,6 +57,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency("trollop", "~> 2.1")
   spec.add_dependency("caliph", "~> 0.3")
-
-  spec.post_install_message = "Welcome to the exciting new world of Xing web development!"
+  spec.add_dependency("bundler", "~> 1.10")
 end
