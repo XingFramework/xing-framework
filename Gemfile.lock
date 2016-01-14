@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xing-framework (0.2.0)
+    xing-framework (0.2.1)
       caliph (~> 0.3)
       trollop (~> 2.1)
 
