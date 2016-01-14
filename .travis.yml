@@ -6,7 +6,7 @@ rvm:
 addons:
   code_climate:
     repo_token: ddd5083adeebd81d86b0c797dffcb66808471019f8690078746e6ddcd01a116d   
-script: bundle exec rake ci
+script: bundle exec rake ci --trace
 cache: bundler
   
 
