@@ -5,8 +5,9 @@ rvm:
   - 2.0.0
 addons:
   code_climate:
-    repo_token: ddd5083adeebd81d86b0c797dffcb66808471019f8690078746e6ddcd01a116d   
-script: bundle exec rake ci --trace
+    repo_token: ddd5083adeebd81d86b0c797dffcb66808471019f8690078746e6ddcd01a116d
+script:
+  - cat .simplecov
+  - bundle exec rspec --failure-exit-code 0 -r simplecov --format html --out /home/travis/build/XingFramework/xing-framework/corundum/docs/rspec/index.html --format json --out /home/travis/build/XingFramework/xing-framework/corundum/docs/rspec/rspec.json spec
+  - bundle exec rake ci --trace
 cache: bundler
-  
-
