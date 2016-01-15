@@ -24,6 +24,8 @@ import Homepage from './homepage/homepage.js';
 import * as RootStates from './rootStates.js';
 import RootCtrl from './rootController.js';
 
+import Resources from "common/resources.js";
+
 var app = new Module(appName, [
   'templates-app', 'templates-common', 'ui.router',
   'picardy.fontawesome',
@@ -40,7 +42,8 @@ var app = new Module(appName, [
   Toast,
   appConfig,
   RootStates,
-  RootCtrl
+  RootCtrl,
+  Resources
 ]);
 
 var injector = new Injector(appName);
