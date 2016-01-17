@@ -1,9 +1,11 @@
 require 'caliph'
 require 'bundler'
+require 'architecture/dsl'
 
 module Xing::CLI::Generators
   class NewProject
     include Caliph::CommandLineDSL
+    include Architecture
 
     attr_accessor :target_name
     attr_accessor :ruby_version
@@ -27,40 +29,64 @@ module Xing::CLI::Generators
       write_ruby_version "frontend"
       write_ruby_version "backend"
 
-      with_temporary_database_yml do
-        Bundler.with_clean_env do
-          shell.run(cmd("cd", target_name) &
-                    cmd("bundle", "install")).must_succeed!
+      write_database_yml
+      write_secrets_yml
 
-          shell.run(cmd("cd", File.join(target_name, "frontend")) &
-                    cmd("bundle", "install") &
-                    cmd("npm", "install")).must_succeed!
+      Bundler.with_clean_env do
+        shell.run(cmd("cd", target_name) &
+                  cmd("bundle", "install")).must_succeed!
 
-          shell.run(cmd("cd", File.join(target_name, "backend")) &
-                    cmd("bundle", "install") &
-                    cmd("rake", "xing:install:migrations")).must_succeed!
+        shell.run(cmd("cd", File.join(target_name, "frontend")) &
+                  cmd("bundle", "install") &
+                  cmd("npm", "install")).must_succeed!
+
+        shell.run(cmd("cd", File.join(target_name, "backend")) &
+                  cmd("bundle", "install") &
+                  cmd("rake", "xing:install:migrations")).must_succeed!
+      end
+
+    end
+
+    def write_database_yml
+      dbyml_path = File.join(target_name, "backend", "config", "database.yml")
+      if !File.exist?(dbyml_path)
+        with_templates do |arc|
+          arc.copy file: "backend/config/database.yml", context: { app_name: target_name }
         end
       end
     end
 
-    def with_temporary_database_yml
-      dbyml_path = File.join(target_name, "backend", "config", "database.yml")
-      if File.exist?(dbyml_path)
-        yield
-      else
-        begin
-          File.open(dbyml_path, "w"){}
-          yield
-        ensure
-          File.unlink(dbyml_path)
+    def write_secrets_yml
+      secyml_path = File.join(target_name, "backend", "config", "secrets.yml")
+      if !File.exist?(secyml_path)
+        context = {
+          dev_secret_key_base: SecureRandom.hex(64),
+          test_secret_key_base: SecureRandom.hex(64),
+          app_name: target_name
+        }
+        with_templates do |arc|
+          arc.copy file: "backend/config/secrets.yml", context: context
         end
+      end
+    end
+
+    def with_templates
+      architecture source: File.expand_path('../../../../../default_configuration/templates/', __FILE__) , destination: target_name  do |arc|
+        yield(arc)
+      end
+    end
+
+    def write_file_to(name, subdir)
+      File.open(File.join(*([target_name] + subdir + [name])), "w") do |rv|
+        yield(rv)
       end
     end
 
     def write_ruby_version(*subdir)
-      File.open(File.join(*([target_name] + subdir + [".ruby-version"])), "w") do |rv|
+      write_file_to(".ruby-version", subdir) do |rv|
         rv.write(ruby_version)
       end
     end
+
   end
 end
