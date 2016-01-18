@@ -9,6 +9,7 @@ module Xing::CLI::Generators
 
     attr_accessor :target_name
     attr_accessor :ruby_version
+    attr_accessor :with_gemset
 
     def shell
       @shell ||= Caliph.new
@@ -29,18 +30,36 @@ module Xing::CLI::Generators
       write_ruby_version "frontend"
       write_ruby_version "backend"
 
+      if with_gemset
+        write_ruby_gemset
+        write_ruby_gemset "frontend"
+        write_ruby_gemset "backend"
+      end
+
       write_database_yml
       write_secrets_yml
 
       Bundler.with_clean_env do
-        shell.run(cmd("cd", target_name) &
+        if with_gemset
+          bundler = shell.run(setup_env_command &
+            cmd("cd", target_name) &
+            cmd("gem", "install", "bundler"))
+        end
+
+        shell.run(
+          setup_env_command &
+                  cmd("cd", target_name) &
                   cmd("bundle", "install")).must_succeed!
 
-        shell.run(cmd("cd", File.join(target_name, "frontend")) &
+        shell.run(
+          setup_env_command &
+          cmd("cd", File.join(target_name, "frontend")) &
                   cmd("bundle", "install") &
                   cmd("npm", "install")).must_succeed!
 
-        shell.run(cmd("cd", File.join(target_name, "backend")) &
+        shell.run(
+          setup_env_command &
+          cmd("cd", File.join(target_name, "backend")) &
                   cmd("bundle", "install") &
                   cmd("rake", "xing:install:migrations")).must_succeed!
       end
@@ -88,5 +107,21 @@ module Xing::CLI::Generators
       end
     end
 
+    def write_ruby_gemset(*subdir)
+      write_file_to(".ruby-gemset", subdir) do |rv|
+        rv.write(target_name)
+      end
+    end
+
+    def setup_env_command
+      if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
+        args = [".", File.expand_path('../../../../../bin/xing-rvm-setup-env', __FILE__), ruby_version]
+        args[3] = target_name if with_gemset
+        cmd(*args)
+      else
+        # put other rb environemnt scripts here
+        cmd(":")
+      end
+    end
   end
 end
