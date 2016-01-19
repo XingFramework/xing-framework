@@ -71,6 +71,8 @@ module Xing::CLI::Generators
       if !File.exist?(dbyml_path)
         with_templates do |arc|
           arc.copy file: "backend/config/database.yml", context: { app_name: target_name }
+          arc.copy file: "backend/config/database.yml.example", context: { app_name: target_name }
+          arc.copy file: "backend/config/database.yml.ci", context: { app_name: target_name }
         end
       end
     end
@@ -85,6 +87,8 @@ module Xing::CLI::Generators
         }
         with_templates do |arc|
           arc.copy file: "backend/config/secrets.yml", context: context
+          arc.copy file: "backend/config/secrets.yml.example", context: context
+          arc.copy file: "backend/config/secrets.yml.ci", context: context
         end
       end
     end

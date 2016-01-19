@@ -1,0 +1,9 @@
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: {{app_name}}_test
+  pool: 5
+  host: 127.0.0.1
+
+development:
+  <<: *test
