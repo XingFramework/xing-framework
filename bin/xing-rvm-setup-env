@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ruby_version_path=$( rvm $1 do rvm env -- --path )
+source $ruby_version_path
+if [ "$2" != "" ]; then
+  rvm gemset create $2
+  source "$ruby_version_path@$2"
+fi
