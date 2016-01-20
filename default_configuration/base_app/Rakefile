@@ -8,8 +8,10 @@ Xing::Tasks::Build.new
 Xing::Tasks::Develop.new
 Xing::Tasks::Frontend.new
 Xing::Tasks::Spec.new
+Xing::Tasks::Initialize.new
 
-
+desc "setup database"
+task :initialize => ['initialize:all']
 desc "The whole shebang"
 task :build => [:check_dependencies, 'build:all']
 
