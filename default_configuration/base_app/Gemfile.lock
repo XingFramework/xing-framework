@@ -135,7 +135,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     valise (1.2.0)
-    xing-root (0.0.7)
+    xing-root (0.0.9)
       caliph (~> 0.3)
       edict (< 1.0)
       mattock (~> 0.10)

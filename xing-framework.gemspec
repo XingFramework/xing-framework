@@ -58,4 +58,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency("trollop", "~> 2.1")
   spec.add_dependency("caliph", "~> 0.3")
   spec.add_dependency("bundler", "~> 1.10")
+  spec.add_dependency("architecture", "~> 6.1")
 end
