@@ -1,0 +1,12 @@
+.bundle/
+*.sw*
+*~
+build/
+bin/
+node_modules/
+.vimrc
+vendor/
+src/common/environment.js
+.ruby-gemset
+**/*.map
+.sass-cache/

@@ -28,6 +28,12 @@ module Corundum
     Git.new(core) do |vc|
       vc.branch = "master"
     end
+
+    task :list_files do
+      core.gemspec.files.each do |file|
+        puts file
+      end
+    end
   end
 end
 
@@ -45,8 +51,22 @@ namespace :app_base do
 
   task :fetch => [:clone, :ungit]
 
+  task :cleanup => :fetch do
+    require 'find'
+    migrations_dir = File.join(name, "backend/db/migrate")
+    shell.run('rm', '-rf', File.join(migrations_dir, "*"))
+    shell.run('touch', File.join(migrations_dir, '.gitkeep'))
+
+    Find.find(name) do |path|
+      if path =~ /\.git(ignore|attributes)\z/
+        dest = path.sub(/\A#{name}/, "default_configuration/templates").gsub(".","")
+        shell.run("mv", "-f", path, dest)
+      end
+    end
+  end
+
   desc "Update the live base files from the application base repo"
-  task :refetch => [:clobber, :fetch]
+  task :refetch => [:clobber, :fetch, :cleanup]
 
   task :clone do
     if File.exist?(name)
@@ -58,6 +78,7 @@ namespace :app_base do
 
   task :ungit do
     git_dir = File.join("#{name}", ".git")
+    puts git_dir
     shell.run('rm', '-rf', git_dir)
   end
 end
