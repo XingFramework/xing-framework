@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.4'
 
-set :repo_url, 'git@git.lrdesign.com:lrd/cms2.git'
+set :repo_url, 'git@github.com:example/example.git'
 set :pty, true
 
 # Default value for :format is :pretty
@@ -43,6 +43,7 @@ set :required_writeable_files, %w{
 # set :keep_releases, 5
 
 set :backend_path, proc{ File::join(release_path, "backend") }
+set :frontend_path, proc{ File::join(release_path, "frontend") }
 set :backend_shared, proc{ File::join(shared_path, "backend") }
 set :webserver_group, "apache"
 set :webserver_user, "apache"
@@ -58,7 +59,7 @@ namespace :deploy do
     on roles(:app), :in => :parallel do
       within release_path do
         with :rails_env => fetch(:stage) do
-          rake "build"
+          execute "bundle", "exec", "rake", "build"
         end
       end
     end
@@ -67,17 +68,33 @@ namespace :deploy do
 
   task :bundle_config do
     on roles(:app), :in => :parallel do
-      execute "mkdir -p #{fetch(:backend_path)}/.bundle"
-      bundle_config = StringIO.new(<<-EOC)
+      [fetch(:backend_path), fetch(:frontend_path), fetch(:release_path)].each do |path|
+
+        execute "mkdir -p #{path}/.bundle"
+        bundle_config = StringIO.new(<<-EOC)
 ---
 BUNDLE_FROZEN: '1'
 BUNDLE_PATH: "#{File::join(shared_path, "backend/vendor/bundle")}"
 BUNDLE_DISABLE_SHARED_GEMS: '1'
-      EOC
-      upload! bundle_config, "#{fetch(:backend_path)}/.bundle/config"
+        EOC
+        upload! bundle_config, "#{path}/.bundle/config"
+      end
     end
   end
-  before :build, :bundle_config
+
+  task :bundle_root do
+    on roles(:app), :in => :parallel do
+      within release_path do
+        as(:root) do
+          execute "bundle", "install"
+        end
+      end
+    end
+  end
+
+  before :bundle_root, :bundle_config
+
+  before :build, :bundle_root
 
   task :perms do
     on roles(:app), :in => :parallel do
