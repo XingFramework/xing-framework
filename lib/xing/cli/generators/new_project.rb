@@ -39,6 +39,8 @@ module Xing::CLI::Generators
       write_database_yml
       write_secrets_yml
 
+      write_git_control_files
+
       Bundler.with_clean_env do
         if with_gemset
           bundler = shell.run(setup_env_command &
@@ -74,6 +76,17 @@ module Xing::CLI::Generators
           arc.copy file: "backend/config/database.yml.example", context: { app_name: target_name }
           arc.copy file: "backend/config/database.yml.ci", context: { app_name: target_name }
         end
+      end
+    end
+
+    def write_git_control_files
+      with_templates do |arc|
+        arc.copy file: "gitignore", as: ".gitignore"
+        arc.copy file: "backend/gitignore", as:"backend/.gitignore"
+        arc.copy file: "frontend/gitignore", as: "frontend/.gitignore"
+        arc.copy file: "gitattributes", as: ".gitattributes"
+        arc.copy file: "backend/gitattributes", as: "backend/.gitattributes"
+        arc.copy file: "frontend/gitattributes", as: "frontend/.gitattributes"
       end
     end
 
