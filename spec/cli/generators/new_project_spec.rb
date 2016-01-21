@@ -21,19 +21,14 @@ describe Xing::CLI::Generators::NewProject do
       npg
     end
 
-    let :file_mock do
-      double("file_mocks")
-    end
-
     before do
-      allow(file_mock).to receive(:expand_path)
-      allow(file_mock).to receive(:open)
-      allow(file_mock).to receive(:join)
-      allow(file_mock).to receive(:exist?)
+      allow(File).to receive(:expand_path)
+      allow(File).to receive(:open)
+      allow(File).to receive(:join)
+      allow(File).to receive(:exist?)
       allow(new_project_generator.shell).to receive(:run).and_return(mock_result)
       allow(new_project_generator).to receive(:cmd)
       allow(new_project_generator).to receive(:architecture)
-      stub_const("File", file_mock)
     end
 
     it "should succeed" do
