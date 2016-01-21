@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
     lib/xing/cli/generators.rb
     lib/xing/cli/generators/new_project.rb
     bin/xing
+    bin/xing-rvm-setup-env
     spec/null_spec.rb
     spec/cli_spec.rb
     spec/generators/new_project_spec.rb
@@ -39,8 +40,7 @@ Gem::Specification.new do |spec|
     spec_help/gem_test_suite.rb
   ]
 
-  Find.find('default_configuration/base_app') do |path|
-    Find.prune if File.basename(path)[0] == ?.
+  Find.find('default_configuration') do |path|
     next if File.directory?(path)
     next if path =~ /\.sw[a-e,g-z]/
     spec.files << path
