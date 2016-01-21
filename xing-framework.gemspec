@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
     lib/xing/cli/generators.rb
     lib/xing/cli/generators/new_project.rb
     bin/xing
+    bin/xing-rvm-setup-env
     spec/null_spec.rb
     spec_help/spec_helper.rb
     spec_help/gem_test_suite.rb
