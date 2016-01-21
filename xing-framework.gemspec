@@ -33,6 +33,8 @@ Gem::Specification.new do |spec|
     lib/xing/cli/generators/new_project.rb
     bin/xing
     spec/null_spec.rb
+    spec/cli_spec.rb
+    spec/generators/new_project_spec.rb
     spec_help/spec_helper.rb
     spec_help/gem_test_suite.rb
   ]
