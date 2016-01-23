@@ -1,9 +1,0 @@
-test: &test
-  adapter: postgresql
-  encoding: unicode
-  database: cms2_test
-  pool: 5
-  host: 127.0.0.1
-
-development:
-  <<: *test

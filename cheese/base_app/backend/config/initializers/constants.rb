@@ -1,1 +1,0 @@
-BACKEND_SUBDOMAIN = "api"
