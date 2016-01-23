@@ -1,6 +1,7 @@
 require 'caliph'
 require 'bundler'
 require 'architecture/dsl'
+require 'securerandom'
 
 module Xing::CLI::Generators
   class NewProject
