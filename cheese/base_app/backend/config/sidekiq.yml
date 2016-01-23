@@ -1,0 +1,4 @@
+development:
+  :concurrency: 2
+test:
+  :concurrency: 2

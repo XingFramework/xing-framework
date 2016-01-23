@@ -21,17 +21,45 @@ describe Xing::CLI::Generators::NewProject do
       npg
     end
 
+    let :templater do
+      double("templater")
+    end
+
     before do
       allow(File).to receive(:expand_path)
       allow(File).to receive(:open)
       allow(File).to receive(:join)
-      allow(File).to receive(:exist?)
+      allow(File).to receive(:exist?).and_return(false)
       allow(new_project_generator.shell).to receive(:run).and_return(mock_result)
       allow(new_project_generator).to receive(:cmd)
-      allow(new_project_generator).to receive(:architecture)
+      allow(templater).to receive(:template)
     end
 
-    it "should succeed" do
+    it "should succeed and do templating" do
+      expect(Xing::CLI::Generators::Templaters::SecretsYmlTemplater).to receive(:new).with(
+        "awesome",
+        {
+          dev_secret_key_base: kind_of(String),
+          test_secret_key_base: kind_of(String),
+          app_name: "awesome"
+        },
+        false).and_return(templater)
+      expect(Xing::CLI::Generators::Templaters::DatabaseYmlTemplater).to receive(:new).with(
+        "awesome",
+        {
+          app_name: "awesome"
+        },
+        false).and_return(templater)
+      expect(Xing::CLI::Generators::Templaters::DocFilesTemplater).to receive(:new).with(
+        "awesome",
+        {
+          app_name: "awesome"
+        }).and_return(templater)
+      expect(Xing::CLI::Generators::Templaters::ControlFilesTemplater).to receive(:new).with(
+        "awesome",
+        {
+          app_name: "awesome"
+        }).and_return(templater)
       new_project_generator.generate
     end
   end

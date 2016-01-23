@@ -1,0 +1,52 @@
+$include-clearfix: true
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include vendor files Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ */
+
+@import "compass"
+@import "compass/reset"
+@import "breakpoint-sass/stylesheets/breakpoint"
+@import "xing-framework-sass/sassybuttons"
+@import "singularitygs/stylesheets/singularitygs"
+
+// fontawesome.  the constant is required to override the default
+// path so that the FA styles will find the fonts in the place our
+// assets build puts them
+$fa-font-path: '../assets'
+@import "font-awesome/scss/font-awesome"
+
+
+// Load reusable constants.  First the framework defaults,
+// then any app overides.
+@import "xing-framework-sass/_default_constants"
+@import "_constants"
+
+// Framework default styling for common DOM structures
+// Don't edit these files in an individual project.  In the base framework,
+// try only to make edits that will not break projects.
+@import "xing-framework-sass/_base"
+@import "xing-framework-sass/_forms"
+@import "xing-framework-sass/_navbar"
+@import "xing-framework-sass/_flexbox"
+@import "xing-framework-sass/_errorFallback"
+
+// Application-specific style files.  Add new files below this line.
+// Default-override group.  These files all have equivalents in xing-framework-sass/
+@import "partials/_forms"
+@import "partials/_navbar"
+@import "partials/_footer"
+
+// Project-specific group.  Put files new to a project under here.
+@import "partials/_layout"
+@import "partials/_typography"
+
+@import "states/root_homepage"
+@import "states/errorFallback"

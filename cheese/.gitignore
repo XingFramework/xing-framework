@@ -1,0 +1,12 @@
+*.sw?
+!*.swf
+*.orig
+.DS_Store
+.ruby-gemset
+tmp/
+.vim-role
+.sass-cache/
+.bundle/
+.envrc
+**/last_run
+**/*.log

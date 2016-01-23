@@ -1,0 +1,12 @@
+production:
+  user: USERNAME
+  host: your.host.here.com
+  path: /var/www/domain.com/backend/current
+
+staging:
+  user: USERNAME
+  host: your.host.here.com
+  path: /var/www/staging.domain.com/backend/current
+
+development:
+  path: tmp/

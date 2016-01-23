@@ -1,0 +1,5 @@
+<ul class="session-links">
+  <li ng-hide="xngSessionLinks.isLoggedIn"><a ui-sref='root.inner.registrations'>Sign Up</a></li>
+  <li ng-hide="xngSessionLinks.isLoggedIn"><a ui-sref='root.inner.sessions'>Sign In</a></li>
+  <li ng-show="xngSessionLinks.isLoggedIn"><a xng-sign-out>Sign Out</a></li>
+</ul>

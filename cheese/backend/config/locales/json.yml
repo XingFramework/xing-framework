@@ -1,0 +1,29 @@
+json:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      inclusion: "inclusion"
+      exclusion: "exclusion"
+      invalid: "invalid"
+      confirmation: "confirmation"
+      accepted: "accepted"
+      empty: "empty"
+      blank: "required"
+      present: "must_be_blank"
+      too_long: "longer_than_%{count}"
+      too_short: "shorter_than_%{count}"
+      wrong_length: "wrong_length_%{count}"
+      not_a_number: "not_a_number"
+      not_an_integer: "not_an_integer"
+      greater_than: "greater_than_%{count}"
+      greater_than_or_equal_to: "greater_than_%{count}"
+      equal_to: "equal_to_%{count}"
+      less_than: "less_than_%{count}"
+      less_than_or_equal_to: "less_than_or_equal_to_%{count}"
+      other_than: "other_than_%{count}"
+      odd: "odd"
+      even: "even"

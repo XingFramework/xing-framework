@@ -1,0 +1,45 @@
+source "https://rubygems.org"
+
+gem 'rails', "~> 4.2.2"
+
+# gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'xing_backend_token_auth', '~> 0.1.31'
+
+gem 'xing-backend'
+
+gem 'pg'
+
+# These are related to authentication
+# New gem?
+gem 'devise'
+gem 'cancancan'
+
+
+# Bibliotech is a gem for managing database backups and synchronization
+# gem 'bibliotech'
+
+group :development, :test do
+  gem "rspec", "~> 3.1.0"
+  gem "rspec-rails"
+  gem 'rspec-activemodel-mocks'
+  gem 'waterpig'
+  gem "factory_girl_rails"
+  gem 'annotate'
+  gem 'simplecov'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'capybara-email'
+  gem 'database_cleaner'
+  gem 'byebug'
+  gem 'cadre'
+end
+
+group :test do
+  gem 'json_spec'
+end
+
+group :development do
+  gem "populator"
+  gem "faker"
+  gem "pivotal-github"
+end

@@ -1,11 +1,10 @@
 require 'caliph'
 require 'bundler'
-require 'architecture/dsl'
+require 'xing/cli/generators/new_project/templater'
 
 module Xing::CLI::Generators
   class NewProject
     include Caliph::CommandLineDSL
-    include Architecture
 
     attr_accessor :target_name
     attr_accessor :ruby_version
@@ -36,10 +35,10 @@ module Xing::CLI::Generators
         write_ruby_gemset "backend"
       end
 
-      write_database_yml
-      write_secrets_yml
-
-      write_git_control_files
+      database_yml_templater.template
+      secrets_yml_templater.template
+      control_files_templater.template
+      doc_files_templater.template
 
       Bundler.with_clean_env do
         if with_gemset
@@ -68,48 +67,37 @@ module Xing::CLI::Generators
 
     end
 
-    def write_database_yml
-      dbyml_path = File.join(target_name, "backend", "config", "database.yml")
-      if !File.exist?(dbyml_path)
-        with_templates do |arc|
-          arc.copy file: "backend/config/database.yml", context: { app_name: target_name }
-          arc.copy file: "backend/config/database.yml.example", context: { app_name: target_name }
-          arc.copy file: "backend/config/database.yml.ci", context: { app_name: target_name }
-        end
+    def database_yml_templater
+      @database_yml_templater ||= begin
+        dbyml_path = File.join(target_name, "backend", "config", "database.yml")
+        Templaters::DatabaseYmlTemplater.new(target_name, context, File.exist?(dbyml_path))
       end
     end
 
-    def write_git_control_files
-      with_templates do |arc|
-        arc.copy file: "gitignore", as: ".gitignore"
-        arc.copy file: "backend/gitignore", as:"backend/.gitignore"
-        arc.copy file: "frontend/gitignore", as: "frontend/.gitignore"
-        arc.copy file: "gitattributes", as: ".gitattributes"
-        arc.copy file: "backend/gitattributes", as: "backend/.gitattributes"
-        arc.copy file: "frontend/gitattributes", as: "frontend/.gitattributes"
+    def control_files_templater
+      @control_files_templater ||= Templaters::ControlFilesTemplater.new(target_name, context)
+    end
+
+    def doc_files_templater
+      @doc_files_templater ||= Templaters::DocFilesTemplater.new(target_name, context)
+    end
+
+    def secrets_yml_templater
+      @secrets_yml_templater ||= begin
+        secyml_path = File.join(target_name, "backend", "config", "secrets.yml")
+        Templaters::SecretsYmlTemplater.new(
+          target_name,
+          context.merge({
+            dev_secret_key_base: SecureRandom.hex(64),
+            test_secret_key_base: SecureRandom.hex(64),
+          }),
+          File.exist?(secyml_path)
+        )
       end
     end
 
-    def write_secrets_yml
-      secyml_path = File.join(target_name, "backend", "config", "secrets.yml")
-      if !File.exist?(secyml_path)
-        context = {
-          dev_secret_key_base: SecureRandom.hex(64),
-          test_secret_key_base: SecureRandom.hex(64),
-          app_name: target_name
-        }
-        with_templates do |arc|
-          arc.copy file: "backend/config/secrets.yml", context: context
-          arc.copy file: "backend/config/secrets.yml.example", context: context
-          arc.copy file: "backend/config/secrets.yml.ci", context: context
-        end
-      end
-    end
-
-    def with_templates
-      architecture source: File.expand_path('../../../../../default_configuration/templates/', __FILE__) , destination: target_name  do |arc|
-        yield(arc)
-      end
+    def context
+      { app_name: target_name }
     end
 
     def write_file_to(name, subdir)

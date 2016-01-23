@@ -1,0 +1,15 @@
+{
+  "debug": false,
+  "bitwise": true,
+  "forin": true,
+  "curly": true,
+  "immed": true,
+  "latedef": false,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "eqnull": true,
+  "esnext": true,
+  "browser": true,
+  "-W100": true
+}

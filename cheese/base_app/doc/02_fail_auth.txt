@@ -1,0 +1,165 @@
+
+  1) User Sends Reset Password clicks on Sign In
+     Failure/Error: within ".session-links" do
+     Capybara::ElementNotFound:
+       Unable to find css ".session-links"
+     # ./spec/support/session_helpers.rb:66:in `block (2 levels) in <top (required)>'
+
+-----------------------------
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Resource load for: /menus
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Resource load for: /resources
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+home A - isAdmin
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Response in backendResponds: {"links":{"sidekiqWeb":"/sidekiq","homepage":"/homepage","page":"/pages/{url_slug}","menus":"/menus","menu":"/menus/{id}","resources":"/resources","adminFroalaImages":"/admin/froala_images","adminFroalaImagesDelete":"/admin/froala_images/delete","adminFroalaDocuments":"/admin/froala_documents","adminPages":"/admin/pages","newAdminPage":"/admin/pages/new","editAdminPage":"/admin/pages/{url_slug}/edit","adminPage":"/admin/pages/{url_slug}","adminMenuItems":"/admin/menu_items","newAdminMenuItem":"/admin/menu_items/new","editAdminMenuItem":"/admin/menu_items/{id}/edit","adminMenuItem":"/admin/menu_items/{id}","adminContentBlocks":"/admin/content_blocks","newAdminContentBlock":"/admin/content_blocks/new","editAdminContentBlock":"/admin/content_blocks/{id}/edit","adminContentBlock":"/admin/content_blocks/{id}","newUserSession":"/users/sign_in","userSession":"/users/sign_in","destroyUserSession":"/users/sign_out","userPassword":"/users/password","newUserPassword":"/users/password/new","editUserPassword":"/users/password/edit","cancelUserRegistration":"/users/cancel","userRegistration":"/users","newUserRegistration":"/users/sign_up","editUserRegistration":"/users/edit","userConfirmation":"/users/confirmation","newUserConfirmation":"/users/confirmation/new","validateToken":"/users/validate_token"},"data":{},"route":"resources","reqParams":null,"$fromServer":true,"parentResource":null,"restangularCollection":false}
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Response in backendResponds: {"links":{"self":"/menus"},"data":[{"links":{"self":"/menus/1"},"data":{"name":"Main Menu"}},{"links":{"self":"/menus/2"},"data":{"name":"Blog Topics"}}],"route":"menus","reqParams":null,"$fromServer":true,"parentResource":null,"restangularCollection":false}
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+<function>
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Resource load for: /menus/1
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+A
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+C
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Response in backendResponds: {"links":{"self":"/menus/1"},"data":{"type":"raw_url","name":"Main Menu","path":"#","children":[]},"route":"menus/1","reqParams":null,"$fromServer":true,"parentResource":null,"restangularCollection":false}
+
+Fri Jan 30 2015 18:00:33 GMT-0800 (PST)
+Response in backendResponds: {"data":[]}
+
+
+
+------------------------- Rails log
+Beginning step User Sends Reset Password clicks on the menu (if needed) (at ./spec/support/session_helpers.rb:46)
+  User Load (1.5ms)  SELECT  "users".* FROM "users"  WHERE "users"."uid" = 'uid 1' LIMIT 1
+Finished step User Sends Reset Password clicks on the menu (if needed) (at ./spec/support/session_helpers.rb:46)
+Completed 401 Unauthorized in 5ms (Views: 1.3ms | ActiveRecord: 1.5ms)
+Response: {
+  "status": "error",
+  "errors": [
+    "Invalid login credentials"
+  ]
+}
+Beginning step User Sends Reset Password clicks on Sign In (at ./spec/support/session_helpers.rb:65)
+Started GET "/resources" for 127.0.0.1 at 2015-01-30 18:00:33 -0800
+Processing by ResourcesController#index as JSON
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+Response: {
+  "links": {
+    "sidekiq_web": "/sidekiq",
+    "homepage": "/homepage",
+    "page": "/pages/{url_slug}",
+    "menus": "/menus",
+    "menu": "/menus/{id}",
+    "resources": "/resources",
+    "admin_froala_images": "/admin/froala_images",
+    "admin_froala_images_delete": "/admin/froala_images/delete",
+    "admin_froala_documents": "/admin/froala_documents",
+    "admin_pages": "/admin/pages",
+    "new_admin_page": "/admin/pages/new",
+    "edit_admin_page": "/admin/pages/{url_slug}/edit",
+    "admin_page": "/admin/pages/{url_slug}",
+    "admin_menu_items": "/admin/menu_items",
+    "new_admin_menu_item": "/admin/menu_items/new",
+    "edit_admin_menu_item": "/admin/menu_items/{id}/edit",
+    "admin_menu_item": "/admin/menu_items/{id}",
+    "admin_content_blocks": "/admin/content_blocks",
+    "new_admin_content_block": "/admin/content_blocks/new",
+    "edit_admin_content_block": "/admin/content_blocks/{id}/edit",
+    "admin_content_block": "/admin/content_blocks/{id}",
+    "new_user_session": "/users/sign_in",
+    "user_session": "/users/sign_in",
+    "destroy_user_session": "/users/sign_out",
+    "user_password": "/users/password",
+    "new_user_password": "/users/password/new",
+    "edit_user_password": "/users/password/edit",
+    "cancel_user_registration": "/users/cancel",
+    "user_registration": "/users",
+    "new_user_registration": "/users/sign_up",
+    "edit_user_registration": "/users/edit",
+    "user_confirmation": "/users/confirmation",
+    "new_user_confirmation": "/users/confirmation/new",
+    "validate_token": "/users/validate_token"
+  },
+  "data": {
+  }
+}
+Started GET "/menus" for 127.0.0.1 at 2015-01-30 18:00:33 -0800
+Processing by MenusController#index as JSON
+  MenuItem Load (0.3ms)  SELECT "menu_items".* FROM "menu_items"  WHERE "menu_items"."parent_id" IS NULL
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+Response: {
+  "links": {
+    "self": "/menus"
+  },
+  "data": [
+    {
+      "links": {
+        "self": "/menus/1"
+      },
+      "data": {
+        "name": "Main Menu"
+      }
+    },
+    {
+      "links": {
+        "self": "/menus/2"
+      },
+      "data": {
+        "name": "Blog Topics"
+      }
+    }
+  ]
+}
+Started GET "/menus/1" for 127.0.0.1 at 2015-01-30 18:00:33 -0800
+Processing by MenusController#show as JSON
+  Parameters: {"id"=>"1"}
+  MenuItem Load (0.2ms)  SELECT  "menu_items".* FROM "menu_items"  WHERE "menu_items"."id" = $1 LIMIT 1  [["id", 1]]
+  MenuItem Load (0.3ms)  SELECT "menu_items".* FROM "menu_items"  WHERE ("menu_items"."lft" >= 1) AND ("menu_items"."lft" < 2)  ORDER BY "menu_items"."lft"
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+Response: {
+  "links": {
+    "self": "/menus/1"
+  },
+  "data": {
+    "type": "raw_url",
+    "name": "Main Menu",
+    "path": "#",
+    "children": [
+
+    ]
+  }
+}
+Finished step User Sends Reset Password clicks on Sign In (at ./spec/support/session_helpers.rb:65)
+

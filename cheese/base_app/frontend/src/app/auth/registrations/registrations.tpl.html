@@ -1,0 +1,37 @@
+<h1>Sign Up</h1>
+
+<form id='registrations-form'>
+
+    <div class='xng-form-row'>
+      <label for="email">Email:</label>
+      <input name="email" ng-model="registration.email" placeholder="Email" />
+      <span class='comment'></span>
+    </div>
+
+    <div class='xng-form-row'>
+      <label for="email-confirmation">Email Confirmation:</label>
+      <input name="email-confirmation" ng-model="registration.emailConfirmation" placeholder="Email Confirmation" />
+      <span class='comment'></span>
+    </div>
+
+    <div class='xng-form-row'>
+      <label for="password">Password:</label>
+      <input type="password" name="password" ng-model="registration.password" placeholder="Password" />
+      <span class='comment'></span>
+    </div>
+
+    <div class='xng-form-row'>
+      <label for="password-confirmation">Password Confirmation:</label>
+      <input type="password" name="password-confirmation" ng-model="registration.passwordConfirmation" placeholder="Password Confirmation" />
+      <span class='comment'></span>
+    </div>
+
+    <div class='xng-form-row'>
+      <button type="submit" ng-click="registrationSubmit()" class='call-to-action'>Sign Up</button>
+    </div>
+
+    <div class='xng-form-row'>
+      <a ui-sref='root.inner.sessions'  class='input-like'>Already have an account?</a>
+    </div>
+
+</form>

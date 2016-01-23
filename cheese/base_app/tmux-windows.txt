@@ -1,0 +1,53 @@
+A quick guide to tmux-windows:
+
+( "Help, I started tmux-windows and I can't get out!" Hit Ctrl-b, type
+kill-session, hit return )
+
+This is a script around the very excellent terminal multiplexer tmux. The
+script launches all the services that help develop web apps in the LRD
+framework.
+
+Start by running `./tmux-windows` - you'll see some output while it checks
+that things seem to be in order, and then it'll redraw the console into 3
+panes.
+
+- In one, you'll see a big Grunt task building the front end JavaScript.
+- In the next, you'll see Sidekiq handling background processes.
+- In the last, you'll see the Rails server handling requests.
+
+A browser window should open connected to the development server, so you can
+poke around at things as you work on it.
+
+Quickie on the default command and interactions:
+
+Tmux is meant to get out of the way while you do other things. As a result,
+you need to let it know that keystrokes are directed at it. By default, you
+prefix all your commands directed at tmux with Ctrl-b.
+
+Ctrl-b Up/Down/Left/Right will bounce around between panes.
+Ctrl-b : will open up a command line where you can enter commands for tmux
+  Useful examples include
+  kill-session (when you're done)
+  respawn-pane (if one of the services crashes - Tmux will add the message
+    "Pane is dead")
+  respawn-window -k (restart everything)
+
+Ctrl-b [ enters copy mode which merits its own section
+
+Copy Mode:
+You can copy and paste stuff using just the keyboard here, but the most useful
+commands are these:
+You can use PageUp/PageDown and the arrow keys to browse the backlog.
+
+? to search - type a few characters, hit return.
+n to search up for the next occurance.
+N to search down for the next occrance.
+(the search commands are brought in from less, if they look familiar)
+
+q will end copy mode and go back to the bottom of the console, where the
+  service will still be running
+
+
+Finally, there's an example-lrd-dev-tmux.conf file that you can copy to your
+home directory to make thing a little easier. Review it first, if only to find
+out where to put it! :)

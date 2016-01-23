@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="<%= appName %>" ng-strict-di>
+  <head>
+    <!-- page information -->
+    <title>Xing Framework Based Website</title>
+
+    <!-- angular html5mode base url -->
+    <base href="/">
+
+    <!-- let google know there is ajax content -->
+    <meta name="fragment" content="!">
+
+    <!-- a value for snapshoting services to check to for page javascript complete -->
+    <meta name="ready-var" content="window.frontendContentLoaded">
+
+    <!-- enable mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+    <style>
+
+        .intro-loading-circle-outer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .intro-loading-circle-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+        }
+
+        .intro-loading-circle {
+          margin-top: 40px;
+          margin-left: 60px;
+          margin-right: 60px;
+          width: 80px;
+          height: 80px;
+          border-radius: 40px;
+          -webkit-box-sizing: border-box;
+          border: solid 10px rgba(255, 255, 255, 0.2);
+          border-top-color: #FFF;
+          -webkit-animation: spin 1s infinite linear;
+        }
+
+        @-webkit-keyframes spin {
+          100% {
+            -webkit-transform: rotate(360deg);
+          }
+        }
+
+        .intro-loading-text {
+            color: white;
+            text-align: center;
+        }
+    </style>
+
+  </head>
+
+
+  <body>
+    <div id='wrap'>
+      <ui-view xng-state-attrs>
+        <div class="intro-loading-circle-outer">
+            <div class="intro-loading-circle-inner">
+                <div class="intro-loading-circle">
+                </div>
+                <h3 class="intro-loading-text">
+                    Loading Content...
+                </h3>
+            </div>
+        </div>
+      </ui-view>
+    </div>
+  </body>
+</html>
