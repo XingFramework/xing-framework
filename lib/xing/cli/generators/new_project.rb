@@ -1,6 +1,9 @@
 require 'caliph'
 require 'bundler'
+require 'architecture/dsl'
+require 'securerandom'
 require 'xing/cli/generators/new_project/templater'
+
 
 module Xing::CLI::Generators
   class NewProject
