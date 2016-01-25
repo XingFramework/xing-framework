@@ -55,6 +55,7 @@ namespace :app_base do
     require 'find'
     migrations_dir = File.join(name, "backend/db/migrate")
     shell.run('rm', '-rf', File.join(migrations_dir, "*"))
+    shell.run('rm', File.join(name, "CODE_OF_CONDUCT.md"))
     shell.run('touch', File.join(migrations_dir, '.gitkeep'))
 
     Find.find(name) do |path|

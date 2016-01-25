@@ -21,6 +21,9 @@ module Xing::CLI::Generators
     # For the moment, this is the simplest thing that can work. Zero templating
     # is done so the project will still have the default module names etc.
     def generate
+
+      user_input.gather
+
       command = cmd('cp', '-a', File.expand_path('../../../../../default_configuration/base_app/', __FILE__), target_name)
       result = shell.run(command)
 
@@ -99,6 +102,14 @@ module Xing::CLI::Generators
       end
     end
 
+    def code_of_conduct_templater
+      @code_of_conduct_templater ||= Templaters::CodeOfConductTemplater.new(target_name,
+        context.merge({
+          email: user_input.coc_contact_email
+        }),
+        !user_input.code_of_conduct)
+    end
+
     def context
       { app_name: target_name }
     end
@@ -131,5 +142,10 @@ module Xing::CLI::Generators
         cmd(":")
       end
     end
+
+    def user_input
+      @user_input ||= UserInput.new
+    end
+
   end
 end

@@ -86,6 +86,22 @@ describe "xing templaters" do
     end
   end
 
+  describe Xing::CLI::Generators::Templaters::CodeOfConductTemplater do
+
+    let :code_of_conduct_templater do
+      Xing::CLI::Generators::Templaters::CodeOfConductTemplater.new("cheese", context, false)
+    end
+
+    before do
+      allow(code_of_conduct_templater).to receive(:architecture).and_yield(mock_arc)
+    end
+
+    it "should copy all doc files templates" do
+      expect(mock_arc).to receive(:copy).with(file: "CODE_OF_CONDUCT.md", context: context)
+      code_of_conduct_templater.template
+    end
+  end
+
   describe Xing::CLI::Generators::Templaters::ControlFilesTemplater do
 
     let :control_files_templater do

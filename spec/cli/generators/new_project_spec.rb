@@ -25,7 +25,13 @@ describe Xing::CLI::Generators::NewProject do
       double("templater")
     end
 
+    let :user_input_mock do
+      double("UserInput", :code_of_conduct => true, :coc_contact_email => "abcd@gefh.com")
+    end
+
     before do
+      allow(Xing::CLI::Generators::NewProject::UserInput).to receive(:new).and_return(user_input_mock)
+      allow(user_input_mock).to receive(:gather)
       allow(File).to receive(:expand_path)
       allow(File).to receive(:open)
       allow(File).to receive(:join)
@@ -55,6 +61,14 @@ describe Xing::CLI::Generators::NewProject do
         {
           app_name: "awesome"
         }).and_return(templater)
+      expect(Xing::CLI::Generators::Templaters::CodeOfConductTemplater).to receive(:new).with(
+        true,
+        {
+          app_name: "awesome",
+          email: "abcd@gefh.com"
+        },
+        false
+        ).and_return(templater)
       expect(Xing::CLI::Generators::Templaters::ControlFilesTemplater).to receive(:new).with(
         "awesome",
         {
