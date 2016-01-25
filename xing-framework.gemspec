@@ -31,19 +31,19 @@ Gem::Specification.new do |spec|
     lib/xing/cli.rb
     lib/xing/cli/generators.rb
     lib/xing/cli/generators/new_project.rb
-    lib/xing/cli/generators/new_project/templater.rb
     lib/xing/cli/generators/new_project/user_input.rb
-    lib/xing/cli/generators/new_project/templaters/code_of_conduct_templater.rb
-    lib/xing/cli/generators/new_project/templaters/control_files_templater.rb
-    lib/xing/cli/generators/new_project/templaters/database_yml_templater.rb
-    lib/xing/cli/generators/new_project/templaters/doc_files_templater.rb
-    lib/xing/cli/generators/new_project/templaters/secrets_yml_templater.rb
+    lib/xing/cli/templaters.rb
+    lib/xing/cli/templaters/code_of_conduct_templater.rb
+    lib/xing/cli/templaters/control_files_templater.rb
+    lib/xing/cli/templaters/database_yml_templater.rb
+    lib/xing/cli/templaters/doc_files_templater.rb
+    lib/xing/cli/templaters/secrets_yml_templater.rb
     bin/xing
     bin/xing-rvm-setup-env
     spec/cli/generators/new_project_spec.rb
     spec/null_spec.rb
     spec/cli_spec.rb
-    spec/cli/templaters/templater_spec.rb
+    spec/cli/templaters_spec.rb
     spec/cli/generators/new_project/user_input_spec.rb
     spec_help/spec_helper.rb
     spec_help/gem_test_suite.rb
