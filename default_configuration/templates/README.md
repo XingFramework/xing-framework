@@ -19,4 +19,4 @@ Things you may want to cover:
 
 * ...
 
-Also, it's good to let your team or open source contributors know your project is open and inclusive. One great way to do this is to have a [Code Of Conduct](CODE_OF_CONDUCT.md) for your project.
+{{code_of_conduct_reference}}

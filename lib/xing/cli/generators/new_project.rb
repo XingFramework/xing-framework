@@ -2,8 +2,8 @@ require 'caliph'
 require 'bundler'
 require 'architecture/dsl'
 require 'securerandom'
-require 'xing/cli/generators/new_project/templater'
-
+require 'xing/cli/templaters'
+require 'xing/cli/generators/new_project/user_input'
 
 module Xing::CLI::Generators
   class NewProject
@@ -45,6 +45,7 @@ module Xing::CLI::Generators
       secrets_yml_templater.template
       control_files_templater.template
       doc_files_templater.template
+      code_of_conduct_templater.template
 
       Bundler.with_clean_env do
         if with_gemset
@@ -76,22 +77,28 @@ module Xing::CLI::Generators
     def database_yml_templater
       @database_yml_templater ||= begin
         dbyml_path = File.join(target_name, "backend", "config", "database.yml")
-        Templaters::DatabaseYmlTemplater.new(target_name, context, File.exist?(dbyml_path))
+        Xing::CLI::Templaters::DatabaseYmlTemplater.new(target_name, context, File.exist?(dbyml_path))
       end
     end
 
     def control_files_templater
-      @control_files_templater ||= Templaters::ControlFilesTemplater.new(target_name, context)
+      @control_files_templater ||= Xing::CLI::Templaters::ControlFilesTemplater.new(
+        target_name, context)
     end
 
     def doc_files_templater
-      @doc_files_templater ||= Templaters::DocFilesTemplater.new(target_name, context)
+      @doc_files_templater ||= Xing::CLI::Templaters::DocFilesTemplater.new(
+        target_name,
+        context.merge({
+          code_of_conduct_reference: (user_input.code_of_conduct ?
+            "All contributors must abide by the [Code of Conduct](CODE_OF_CONDUCT.md)" : "")
+        }))
     end
 
     def secrets_yml_templater
       @secrets_yml_templater ||= begin
         secyml_path = File.join(target_name, "backend", "config", "secrets.yml")
-        Templaters::SecretsYmlTemplater.new(
+        Xing::CLI::Templaters::SecretsYmlTemplater.new(
           target_name,
           context.merge({
             dev_secret_key_base: SecureRandom.hex(64),
@@ -103,7 +110,8 @@ module Xing::CLI::Generators
     end
 
     def code_of_conduct_templater
-      @code_of_conduct_templater ||= Templaters::CodeOfConductTemplater.new(target_name,
+      @code_of_conduct_templater ||= Xing::CLI::Templaters::CodeOfConductTemplater.new(
+        target_name,
         context.merge({
           email: user_input.coc_contact_email
         }),

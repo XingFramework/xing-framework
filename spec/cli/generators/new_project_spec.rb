@@ -42,7 +42,7 @@ describe Xing::CLI::Generators::NewProject do
     end
 
     it "should succeed and do templating" do
-      expect(Xing::CLI::Generators::Templaters::SecretsYmlTemplater).to receive(:new).with(
+      expect(Xing::CLI::Templaters::SecretsYmlTemplater).to receive(:new).with(
         "awesome",
         {
           dev_secret_key_base: kind_of(String),
@@ -50,26 +50,27 @@ describe Xing::CLI::Generators::NewProject do
           app_name: "awesome"
         },
         false).and_return(templater)
-      expect(Xing::CLI::Generators::Templaters::DatabaseYmlTemplater).to receive(:new).with(
+      expect(Xing::CLI::Templaters::DatabaseYmlTemplater).to receive(:new).with(
         "awesome",
         {
           app_name: "awesome"
         },
         false).and_return(templater)
-      expect(Xing::CLI::Generators::Templaters::DocFilesTemplater).to receive(:new).with(
+      expect(Xing::CLI::Templaters::DocFilesTemplater).to receive(:new).with(
         "awesome",
         {
-          app_name: "awesome"
+          app_name: "awesome",
+          code_of_conduct_reference: "All contributors must abide by the [Code of Conduct](CODE_OF_CONDUCT.md)"
         }).and_return(templater)
-      expect(Xing::CLI::Generators::Templaters::CodeOfConductTemplater).to receive(:new).with(
-        true,
+      expect(Xing::CLI::Templaters::CodeOfConductTemplater).to receive(:new).with(
+        "awesome",
         {
           app_name: "awesome",
           email: "abcd@gefh.com"
         },
         false
         ).and_return(templater)
-      expect(Xing::CLI::Generators::Templaters::ControlFilesTemplater).to receive(:new).with(
+      expect(Xing::CLI::Templaters::ControlFilesTemplater).to receive(:new).with(
         "awesome",
         {
           app_name: "awesome"

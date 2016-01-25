@@ -1,5 +1,5 @@
 require 'xing'
-require 'xing/cli/generators/new_project/templater'
+require 'xing/cli/templaters'
 
 describe "xing templaters" do
   let :mock_arc do
@@ -10,21 +10,21 @@ describe "xing templaters" do
     { app_name: "cheese"}
   end
 
-  describe Xing::CLI::Generators::Templaters::Templater
+  describe Xing::CLI::Templaters::Templater
     describe "control is off" do
       let :templater do
-        Xing::CLI::Generators::Templaters::Templater.new("cheese", context, false)
+        Xing::CLI::Templaters::Templater.new("cheese", context, false)
       end
 
       it "should do templating" do
-        expect(templater).to receive(:architecture).with(source: File.expand_path("../../../../../default_configuration/templates/", __FILE__), destination: "cheese")
+        expect(templater).to receive(:architecture).with(source: File.expand_path("../../../default_configuration/templates/", __FILE__), destination: "cheese")
         templater.template
       end
     end
 
     describe "control is on" do
       let :templater do
-        Xing::CLI::Generators::Templaters::Templater.new("cheese", context, true)
+        Xing::CLI::Templaters::Templater.new("cheese", context, true)
       end
 
       it "should not do templating" do
@@ -32,10 +32,10 @@ describe "xing templaters" do
       end
     end
 
-  describe Xing::CLI::Generators::Templaters::SecretsYmlTemplater do
+  describe Xing::CLI::Templaters::SecretsYmlTemplater do
 
     let :secrets_yml_templater do
-      Xing::CLI::Generators::Templaters::SecretsYmlTemplater.new("cheese", context, false)
+      Xing::CLI::Templaters::SecretsYmlTemplater.new("cheese", context, false)
     end
 
     before do
@@ -50,10 +50,10 @@ describe "xing templaters" do
     end
   end
 
-  describe Xing::CLI::Generators::Templaters::DatabaseYmlTemplater do
+  describe Xing::CLI::Templaters::DatabaseYmlTemplater do
 
     let :database_yml_templater do
-      Xing::CLI::Generators::Templaters::DatabaseYmlTemplater.new("cheese", context, false)
+      Xing::CLI::Templaters::DatabaseYmlTemplater.new("cheese", context, false)
     end
 
     before do
@@ -68,10 +68,10 @@ describe "xing templaters" do
     end
   end
 
-  describe Xing::CLI::Generators::Templaters::DocFilesTemplater do
+  describe Xing::CLI::Templaters::DocFilesTemplater do
 
     let :doc_files_templater do
-      Xing::CLI::Generators::Templaters::DocFilesTemplater.new("cheese", context, false)
+      Xing::CLI::Templaters::DocFilesTemplater.new("cheese", context, false)
     end
 
     before do
@@ -86,10 +86,10 @@ describe "xing templaters" do
     end
   end
 
-  describe Xing::CLI::Generators::Templaters::CodeOfConductTemplater do
+  describe Xing::CLI::Templaters::CodeOfConductTemplater do
 
     let :code_of_conduct_templater do
-      Xing::CLI::Generators::Templaters::CodeOfConductTemplater.new("cheese", context, false)
+      Xing::CLI::Templaters::CodeOfConductTemplater.new("cheese", context, false)
     end
 
     before do
@@ -102,10 +102,10 @@ describe "xing templaters" do
     end
   end
 
-  describe Xing::CLI::Generators::Templaters::ControlFilesTemplater do
+  describe Xing::CLI::Templaters::ControlFilesTemplater do
 
     let :control_files_templater do
-      Xing::CLI::Generators::Templaters::ControlFilesTemplater.new("cheese", context, false)
+      Xing::CLI::Templaters::ControlFilesTemplater.new("cheese", context, false)
     end
 
     before do
