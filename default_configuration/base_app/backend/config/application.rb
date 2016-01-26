@@ -58,9 +58,10 @@ module APP_MODULE
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.site_title = "Another Quality Xing App"
+    allowed_origins = instance.secrets.allowed_origins
     config.middleware.insert_before Rack::Runtime, Rack::Cors do
         allow do
-            origins '*'
+            origins allowed_origins
             resource '*',
             :headers => :any,
             :expose => ['Location', 'access-token', 'token-type', 'client', 'expiry', 'uid'],
