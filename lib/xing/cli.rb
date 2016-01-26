@@ -24,7 +24,7 @@ Global Options:
         framework_version =
           begin
             Gem::Specification.find_by_name("xing-framework").version
-          rescue Gem::LoadError
+          rescue
             "<developement-version>"
           end
         version "Xing CLI #{framework_version} (c) 2015 Logical Reality Design, Inc."
