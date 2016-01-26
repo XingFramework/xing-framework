@@ -42,6 +42,14 @@ Authors
 -------
 
 * Evan Dorn
+* Judson Lester
+* Hannah Howard
+* Patricia Ho
+* Mike Wong
+* Christa Hartsock
+* Paula Burke
+* Peter Phan
+* Tony Delgado-Willis
 
 Version
 -------
