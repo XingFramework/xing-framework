@@ -1,6 +1,5 @@
 require 'caliph'
 require 'bundler'
-require 'architecture/dsl'
 require 'securerandom'
 require 'xing/cli/templaters'
 require 'xing/cli/generators/new_project/user_input'
