@@ -8,7 +8,7 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "a1atscript": "0.4.5",
+    "a1atscript": "^0.4.5",
     "angular": "~1.4.5",
     "angular-animate": "~1.4.5",
     "angular-cookies": "~1.4.5",
@@ -45,7 +45,7 @@
     "grunt-karma": "^0.8.3",
     "grunt-ng-annotate": "^0.3.2",
     "grunt-string-replace": "^1.2.0",
-    "grunt-xing-index": "^0.0.2",
+    "grunt-xing-index": "0.0.3",
     "hammerjs": "~2.0.4",
     "jasmine-core": "*",
     "jquery": "^2.1.1",
@@ -68,7 +68,7 @@
     "traceur": "0.0.87",
     "uri-templates": "~0.1.5",
     "xing-framework-sass": "0.0.3",
-    "xing-frontend-grunt": "0.0.8",
+    "xing-frontend-grunt": "0.0.11",
     "xing-frontend-token-auth": "0.0.3",
     "xing-frontend-utils": "0.0.1-beta6",
     "xing-grunt-revise": "^0.0.1",
