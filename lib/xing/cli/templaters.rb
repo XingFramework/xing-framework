@@ -6,17 +6,18 @@ module Xing::CLI::Templaters
 
     include Architecture
 
-    def initialize(target_name, context, control = false)
+    def initialize(target_name, context, guard = false)
       @target_name = target_name
       @context = context
-      @control = control
+      @guard = guard
     end
 
-    attr_reader :target_name, :context, :control
+    attr_reader :target_name, :context, :guard
 
     def template
-      if !control
-        architecture source: File.expand_path('../../../../default_configuration/templates/', __FILE__) , destination: target_name  do |arc|
+      if !guard
+        architecture source: File.expand_path('../../../../default_configuration/templates/', __FILE__),
+          destination: target_name  do |arc|
           template_files(arc)
         end
       end

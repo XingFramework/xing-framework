@@ -11,7 +11,7 @@ describe "xing templaters" do
   end
 
   describe Xing::CLI::Templaters::Templater
-    describe "control is off" do
+    describe "guard is off" do
       let :templater do
         Xing::CLI::Templaters::Templater.new("cheese", context, false)
       end
@@ -22,7 +22,7 @@ describe "xing templaters" do
       end
     end
 
-    describe "control is on" do
+    describe "guard is on" do
       let :templater do
         Xing::CLI::Templaters::Templater.new("cheese", context, true)
       end
