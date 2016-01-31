@@ -22,4 +22,17 @@ templates.
 [![Code Climate](https://codeclimate.com/github/XingFramework/xing-application-base/badges/gpa.svg)](https://codeclimate.com/github/XingFramework/xing-application-base)
 [![Dependency Status](https://gemnasium.com/XingFramework/xing-application-base.svg)](https://gemnasium.com/XingFramework/xing-application-base)
 
+Authors
+-------
+
+* Evan Dorn
+* Judson Lester
+* Hannah Howard
+* Patricia Ho
+* Mike Wong
+* Christa Hartsock
+* Paula Burke
+* Peter Phan
+* Tony Delgado-Willis
+
 The Xing Framework strives to be an open and inclusive project. All Contributors to the Xing Framework must abide by our [Code Of Conduct](http://github.com/XingFramework/xing-application-base/blob/master/CODE_OF_CONDUCT.md)
