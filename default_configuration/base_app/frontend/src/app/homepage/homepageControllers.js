@@ -1,9 +1,11 @@
 import {Controller} from 'a1atscript';
 
 @Controller('HomepageShowCtrl', [])
-export function HomepageShowController(){
+export class HomepageShowController {
+  constructor() {}
 }
 
 @Controller('HomepageCtrl', [])
-export function HomepageController() {
+export class HomepageController {
+  constructor() {}
 }
