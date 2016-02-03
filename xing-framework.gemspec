@@ -5,7 +5,7 @@ require 'find'
 Gem::Specification.new do |spec|
   spec.name		= "xing-framework"
   #{MAJOR: incompatible}.{MINOR added feature}.{PATCH bugfix}-{LABEL}
-  spec.version		= "0.3.1"
+  spec.version		= "0.3.2"
   author_list = {
     "Evan Dorn" => 'evan@lrdesign.com',
     "Judson Lester" => "judson@lrdesign.com"

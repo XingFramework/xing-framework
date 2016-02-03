@@ -60,7 +60,7 @@
     "karma-requirejs": "^0.2.2",
     "karma-sourcemap-loader": "git://github.com/LRDesign/karma-sourcemap-loader",
     "lodash": "^2.4.1",
-    "relayer": "0.1.0",
+    "relayer": "^0.2.1",
     "requirejs": "~2.1.15",
     "responsive-nav": "~1.0.32",
     "sass-import-once": "~0.1.1",
@@ -73,6 +73,7 @@
     "xing-frontend-utils": "0.0.1-beta6",
     "xing-grunt-revise": "^0.0.1",
     "xing-inflector": "0.0.2",
-    "xing-traceur": "^0.0.8"
+    "xing-traceur": "^0.0.8",
+    "xing-promise": "^0.0.1"
   }
 }
