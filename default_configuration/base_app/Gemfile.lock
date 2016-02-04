@@ -46,8 +46,8 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     tilt (2.0.2)
-    valise (1.2.0)
-    xing-root (0.0.9)
+    valise (1.2.1)
+    xing-root (1.0.0.pre.beta)
       caliph (~> 0.3)
       edict (< 1.0)
       mattock (~> 0.10)
@@ -60,7 +60,7 @@ DEPENDENCIES
   capistrano-passenger
   compass
   rack
-  xing-root
+  xing-root (= 1.0.0.pre.beta)
 
 BUNDLED WITH
    1.11.2

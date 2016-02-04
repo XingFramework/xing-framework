@@ -5,7 +5,7 @@ gem 'rails', "~> 4.2.2"
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'xing_backend_token_auth', '~> 0.1.31'
 
-gem 'xing-backend'
+gem 'xing-backend', '1.0.0-beta'
 
 gem 'pg'
 

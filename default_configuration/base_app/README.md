@@ -35,4 +35,7 @@ Authors
 * Peter Phan
 * Tony Delgado-Willis
 
+Note to Contributors
+--------------------
+
 The Xing Framework strives to be an open and inclusive project. All Contributors to the Xing Framework must abide by our [Code Of Conduct](http://github.com/XingFramework/xing-application-base/blob/master/CODE_OF_CONDUCT.md)

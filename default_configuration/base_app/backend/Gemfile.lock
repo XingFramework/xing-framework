@@ -242,7 +242,7 @@ GEM
       rspec-steps (~> 2.1)
       text-table (~> 1.2.3)
     websocket (1.2.2)
-    xing-backend (0.0.25)
+    xing-backend (1.0.0.pre.beta)
       active_model_serializers (~> 0.9, >= 0.9.3)
       builder (~> 3.1)
       hash_validator (~> 0.4)
@@ -255,9 +255,9 @@ GEM
       sidekiq (~> 3.3)
       sinatra (~> 1.3)
       typhoeus (~> 0.7)
-      xing-dev-assets (> 0, <= 1.0)
+      xing-dev-assets (= 1.0.0.pre.beta)
       xing_backend_token_auth (~> 0.1, >= 0.1.31)
-    xing-dev-assets (0.0.1)
+    xing-dev-assets (1.0.0.pre.beta)
       rack (~> 1.6)
     xing_backend_token_auth (0.1.32)
       devise (~> 3.2)
@@ -290,7 +290,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   waterpig
-  xing-backend
+  xing-backend (= 1.0.0.pre.beta)
   xing_backend_token_auth (~> 0.1.31)
 
 BUNDLED WITH
