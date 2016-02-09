@@ -32,6 +32,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'byebug'
   gem 'cadre'
+  gem "faker"
 end
 
 group :test do
@@ -40,6 +41,5 @@ end
 
 group :development do
   gem "populator"
-  gem "faker"
   gem "pivotal-github"
 end

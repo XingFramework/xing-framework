@@ -3,4 +3,4 @@ gem "capistrano"
 gem 'rack'
 gem 'compass'
 gem 'capistrano-passenger'
-gem 'xing-root', '1.0.0-beta'
+gem 'xing-root', '1.0.0-beta.1'
