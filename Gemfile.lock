@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xing-framework (1.0.0.pre.beta)
+    xing-framework (1.0.0.pre.beta.1)
       architecture (~> 6.1)
       bundler (~> 1.10)
       caliph (~> 0.3)
